@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdx0xddqyosc"]
+[gd_scene load_steps=7 format=3 uid="uid://bdx0xddqyosc"]
 
 [ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="1_wfhpi"]
-[ext_resource type="PackedScene" uid="uid://cenfojpsxej1n" path="res://wire/wire_source.tscn" id="2_whpuv"]
+[ext_resource type="PackedScene" uid="uid://b0qbw651r7tfp" path="res://items/pickup.tscn" id="2_whpuv"]
+[ext_resource type="PackedScene" uid="uid://bb5m1ypxffkao" path="res://items/empty_space.tscn" id="3_85hcc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whpuv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -35,5 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 0.662437, 0.749118, 0, -0.749118, 0.662437, 
 [node name="Player" parent="." instance=ExtResource("1_wfhpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17749, 1.60858, -0.959602)
 
-[node name="WireSource" parent="." instance=ExtResource("2_whpuv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7853, 0.71, 4.11277)
+[node name="Pickup" parent="." instance=ExtResource("2_whpuv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18948, 0.55, 3.67367)
+
+[node name="EmptySpace" parent="." instance=ExtResource("3_85hcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06681, 0.549999, 5.26465)

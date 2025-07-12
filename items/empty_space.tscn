@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5m1ypxffkao"]
+
+[ext_resource type="Script" uid="uid://cydgjqysmmkde" path="res://items/empty_space.gd" id="1_cto6y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rhqs"]
+
+[node name="EmptySpace" type="StaticBody3D"]
+script = ExtResource("1_cto6y")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0rhqs")
+
+[node name="Inventory" type="Node3D" parent="."]

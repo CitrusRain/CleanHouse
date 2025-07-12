@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://flw2rmglext3"]
+[gd_scene load_steps=6 format=3 uid="uid://flw2rmglext3"]
 
 [ext_resource type="Script" uid="uid://cp4cbn335ve7a" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cyahnul1bn02a" path="res://player/player_interact.gd" id="2_rkbax"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_oul6g")
@@ -15,3 +18,10 @@ mesh = SubResource("CapsuleMesh_kqu6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_oul6g")
+
+[node name="PlayerInteract" type="ShapeCast3D" parent="." groups=["player_hitbox"]]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.51686, 0)
+shape = SubResource("CapsuleShape3D_rkbax")
+script = ExtResource("2_rkbax")
+
+[node name="PlayerInventory" type="Node3D" parent="."]
