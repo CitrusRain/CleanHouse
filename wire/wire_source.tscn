@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cenfojpsxej1n"]
+
+[ext_resource type="Texture2D" uid="uid://dfajbea1xdp8m" path="res://debugtextures/WireSource.png" id="1_1byvs"]
+[ext_resource type="Script" uid="uid://bet1wkv27uy1o" path="res://wire/wire_source.gd" id="1_f7eo8"]
+
+[node name="WireSource" type="Node3D"]
+script = ExtResource("1_f7eo8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource("1_1byvs")

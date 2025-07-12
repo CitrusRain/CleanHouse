@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh24bmgstedx6"]
+
+[ext_resource type="Script" uid="uid://c4amck7822ig" path="res://wire/wire_segment.gd" id="1_1ivoq"]
+
+[node name="WireSegment" type="Node3D"]
+script = ExtResource("1_1ivoq")
