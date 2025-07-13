@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfeh8hkcge7sm"]
+
+[ext_resource type="Script" uid="uid://cydgjqysmmkde" path="res://items/empty_space.gd" id="1_yveae"]
+[ext_resource type="PackedScene" uid="uid://ey14ntv03xn2" path="res://items/trash_bag.tscn" id="2_0sy0r"]
+[ext_resource type="PackedScene" uid="uid://bdpkgaykydasl" path="res://models/toychest.glb" id="3_0sy0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rhqs"]
+
+[node name="ToyChest" type="StaticBody3D" groups=["container", "targets"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_yveae")
+deposit_type = 1
+trash_bag = ExtResource("2_0sy0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0rhqs")
+
+[node name="Inventory" type="Node3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+visible = false
+billboard = 1
+text = "#"
+font_size = 137
+outline_size = 62
+
+[node name="toychest" parent="." instance=ExtResource("3_0sy0r")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 0, -0.230005, 0)

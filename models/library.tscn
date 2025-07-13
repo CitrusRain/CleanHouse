@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8i046tjmh3d5"]
+
+[ext_resource type="PackedScene" uid="uid://dukwmapfvpcdi" path="res://models/counter.glb" id="1_k55vr"]
+[ext_resource type="PackedScene" uid="uid://n77kpsioo3hm" path="res://models/wall.glb" id="2_efk4s"]
+[ext_resource type="PackedScene" uid="uid://chf8ic41j6jf5" path="res://models/blankcounter.glb" id="3_es6a0"]
+
+[node name="Library" type="Node3D"]
+
+[node name="counter" parent="." instance=ExtResource("1_k55vr")]
+transform = Transform3D(1.16, 0, 0, 0, 1.16, 0, 0, 0, 1.16, 0, -0.265, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+
+[node name="wall" parent="." instance=ExtResource("2_efk4s")]
+transform = Transform3D(1.145, 0, 0, 0, 1.145, 0, 0, 0, 1.145, 0, 0.5, 0)
+
+[node name="blankcounter" parent="." instance=ExtResource("3_es6a0")]
+transform = Transform3D(1.16, 0, 0, 0, 1.16, 0, 0, 0, 1.16, 0, -0.265, 0)

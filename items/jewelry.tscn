@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0qbw651r7tfp"]
+[gd_scene load_steps=4 format=3 uid="uid://kdl38kruw2og"]
 
-[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_1sycn"]
+[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_lwr2x"]
+[ext_resource type="Texture2D" uid="uid://cx6eiyclgqto5" path="res://textures/watch.png" id="2_3cca5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
 radius = 0.7
 
-[node name="Pickup" type="Area3D" groups=["targets"]]
-script = ExtResource("1_1sycn")
+[node name="Jewelry" type="Area3D" groups=["targets"]]
+script = ExtResource("1_lwr2x")
+pickup_type = 6
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_3cca5")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x1sru")
@@ -18,7 +25,7 @@ shape = SubResource("SphereShape3D_x1sru")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
 billboard = 1
-text = "#"
+text = "Jewelry"
 font_size = 137
 outline_size = 62
 

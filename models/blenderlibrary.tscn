@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://efquf6j1436l"]
+
+[ext_resource type="PackedScene" uid="uid://cgln1i0dhv1ek" path="res://models/blendermeshlibrary.glb" id="1_l0yhk"]
+
+[node name="Library" type="Node3D"]
+
+[node name="blendermeshlibrary" parent="." instance=ExtResource("1_l0yhk")]

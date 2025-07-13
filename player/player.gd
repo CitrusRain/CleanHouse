@@ -3,8 +3,7 @@ extends CharacterBody3D
 @onready var player_interact: ShapeCast3D = $PlayerInteract
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export var SPEED = 10.0
 
 
 func _physics_process(delta: float) -> void:
@@ -23,7 +22,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	player_interact.check_interactions()
-	
+	if player_interact:
+		player_interact.check_interactions()
 	
 	move_and_slide()

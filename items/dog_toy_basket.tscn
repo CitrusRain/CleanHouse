@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://duweiuaoial4g"]
+
+[ext_resource type="Script" uid="uid://cydgjqysmmkde" path="res://items/empty_space.gd" id="1_f2cm0"]
+[ext_resource type="PackedScene" uid="uid://ey14ntv03xn2" path="res://items/trash_bag.tscn" id="2_xtjdk"]
+[ext_resource type="PackedScene" uid="uid://c77lc77mvopkv" path="res://models/dogtoybin.glb" id="3_f2cm0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rhqs"]
+
+[node name="DogToyBasket" type="StaticBody3D" groups=["container", "targets"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_f2cm0")
+deposit_type = 5
+trash_bag = ExtResource("2_xtjdk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0rhqs")
+
+[node name="Inventory" type="Node3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+visible = false
+billboard = 1
+text = "#"
+font_size = 137
+outline_size = 62
+
+[node name="dogtoybin" parent="." instance=ExtResource("3_f2cm0")]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, -0.362099, 0)

@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0qbw651r7tfp"]
+[gd_scene load_steps=4 format=3 uid="uid://c7ph2yxbecca4"]
 
-[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_1sycn"]
+[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_tgvi6"]
+[ext_resource type="Texture2D" uid="uid://dwmqfw3tar7ja" path="res://textures/dog_bone.png" id="2_tgvi6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
 radius = 0.7
 
-[node name="Pickup" type="Area3D" groups=["targets"]]
-script = ExtResource("1_1sycn")
+[node name="DogToy" type="Area3D" groups=["targets"]]
+script = ExtResource("1_tgvi6")
+pickup_type = 5
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_tgvi6")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x1sru")
@@ -18,7 +25,7 @@ shape = SubResource("SphereShape3D_x1sru")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
 billboard = 1
-text = "#"
+text = "Dog Toy"
 font_size = 137
 outline_size = 62
 

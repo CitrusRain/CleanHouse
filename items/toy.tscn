@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://df113ded8cj2r"]
+
+[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_hvywe"]
+[ext_resource type="Texture2D" uid="uid://cnu13gfc2213a" path="res://textures/doll.png" id="2_hvywe"]
+[ext_resource type="Texture2D" uid="uid://b8dgci68po6k3" path="res://textures/rocket.png" id="3_4ssli"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
+radius = 0.7
+
+[node name="Toy" type="Area3D" groups=["targets"]]
+script = ExtResource("1_hvywe")
+pickup_type = 1
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x1sru")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+billboard = 1
+text = "Toy"
+font_size = 137
+outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="Doll" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_hvywe")
+
+[node name="Rocket" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_4ssli")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
