@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://efquf6j1436l"]
+[gd_scene load_steps=3 format=3 uid="uid://efquf6j1436l"]
 
+[ext_resource type="PackedScene" uid="uid://dukwmapfvpcdi" path="res://models/counter.glb" id="1_37xc8"]
 [ext_resource type="PackedScene" uid="uid://cgln1i0dhv1ek" path="res://models/blendermeshlibrary.glb" id="1_l0yhk"]
 
 [node name="Library" type="Node3D"]
 
+[node name="counter" parent="." instance=ExtResource("1_37xc8")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+
 [node name="blendermeshlibrary" parent="." instance=ExtResource("1_l0yhk")]
+transform = Transform3D(1.155, 0, 0, 0, 1.155, 0, 0, 0, 1.155, 0, 0, 0)
