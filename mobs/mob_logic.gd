@@ -20,13 +20,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _process(_delta):
 	
-	
-	
 	if mob_inventory.get_child_count() != 0:
-		
-		var ab = navigation_region_3d.get_bounds()
-		
-		navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap"), 1, true) 
+		pass
 	elif mob_inventory.get_child_count() == 0 :
 		if target:
 			pass
@@ -36,7 +31,7 @@ func _process(_delta):
 	
 	mob_interact.check_interactions()
 	if attention_span.is_stopped() and mob_inventory.get_child_count() > 0:
-		attention_span.wait_time = randi() % 15
+		attention_span.wait_time = 1+ randi() % 15
 		attention_span.start()
 		
 
@@ -75,3 +70,7 @@ func find_something_to_do():
 	target = targets[randi() % targets.size()]
 	while target.deposit_type == general_functions.item_types.TRASH:
 		target = targets[randi() % targets.size()]
+
+func find_somewhere_to_play():
+	navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap").get_navigation_map(), 1, true) 
+	$PlayPoint.global_position = navigation_agent_3d.target_position

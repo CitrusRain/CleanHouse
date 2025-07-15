@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2wh54wovnqs"]
+
+[ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="1_u7vgx"]
+
+[node name="MishandledItemPenalty" type="HBoxContainer"]
+
+[node name="ItemImage" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_u7vgx")
+
+[node name="LocationImage" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_u7vgx")
+
+[node name="ContainerName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Container name"
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Item name"
+
+[node name="Deduction" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "-0 pts"
+horizontal_alignment = 2

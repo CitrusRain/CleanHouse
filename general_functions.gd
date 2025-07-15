@@ -16,3 +16,13 @@ static func get_all_children(in_node, array := []):
 	for child in in_node.get_children():
 		array = get_all_children(child, array)
 	return array
+
+static func seconds_to_minutes_and_seconds_string(seconds: int) -> String:
+	var minutes = int(seconds) / 60
+	seconds = int(seconds) % 60
+	if seconds < 10:
+		return str(minutes, ":0", seconds)
+	else:
+		return str(minutes, ":", seconds)
+	
+	

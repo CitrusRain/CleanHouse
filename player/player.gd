@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player 
 
 @onready var player_interact: ShapeCast3D = $PlayerInteract
 

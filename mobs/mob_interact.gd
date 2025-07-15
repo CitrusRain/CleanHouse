@@ -12,7 +12,7 @@ func check_interactions() -> void:
 				var mine = collider.inventory.get_child(randi() % i)
 				mine.reparent(mob_inventory)
 				mine.visible = true
-				
+				get_parent().find_somewhere_to_play()
 						
 						
 func deposit(held_item, new_place):

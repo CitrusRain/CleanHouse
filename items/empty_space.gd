@@ -10,7 +10,7 @@ func _ready() -> void:
 	if $Label3D.text == "#":
 		$Label3D.text = str(deposit_type)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if size > 0 and inventory.get_child_count() > size and trash_bag:
 		var tb = trash_bag.instantiate()
 		tb.pickup_type = 1

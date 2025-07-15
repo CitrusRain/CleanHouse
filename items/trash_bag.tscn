@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ey14ntv03xn2"]
+[gd_scene load_steps=5 format=3 uid="uid://ey14ntv03xn2"]
 
 [ext_resource type="Script" uid="uid://bb4igjsq6fy0w" path="res://trash_bag.gd" id="1_1p74u"]
+[ext_resource type="Texture2D" uid="uid://iy0y0x4urlkr" path="res://textures/trash_bag.png" id="2_n05c3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p74u"]
 albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
@@ -10,6 +11,7 @@ radius = 0.7
 
 [node name="TrashBag" type="Area3D"]
 script = ExtResource("1_1p74u")
+lose_points = 200
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 radius = 0.7
@@ -24,5 +26,10 @@ billboard = 1
 text = "Trash Bag"
 font_size = 137
 outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="FullBag" type="Sprite3D" parent="Options"]
+texture = ExtResource("2_n05c3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

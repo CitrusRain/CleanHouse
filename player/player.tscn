@@ -24,4 +24,4 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.51686, 0)
 shape = SubResource("CapsuleShape3D_rkbax")
 script = ExtResource("2_rkbax")
 
-[node name="PlayerInventory" type="Node3D" parent="."]
+[node name="PlayerInventory" type="Node3D" parent="." groups=["player_inventory"]]

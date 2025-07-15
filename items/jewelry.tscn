@@ -6,15 +6,10 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
 radius = 0.7
 
-[node name="Jewelry" type="Area3D" groups=["targets"]]
+[node name="Jewelry" type="Area3D" groups=["targets", "valuables"]]
 script = ExtResource("1_lwr2x")
 pickup_type = 6
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("2_3cca5")
+trashed_penalty = 500
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false
@@ -28,5 +23,13 @@ billboard = 1
 text = "Jewelry"
 font_size = 137
 outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_3cca5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

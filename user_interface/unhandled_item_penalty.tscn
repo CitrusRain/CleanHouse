@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cagv3t5te01h3"]
+
+[ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="1_xtu1s"]
+
+[node name="UnhandledItemPenalty" type="HBoxContainer"]
+
+[node name="ItemImage" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_xtu1s")
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Item name"
+
+[node name="Deduction" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "-0 pts"
+horizontal_alignment = 2

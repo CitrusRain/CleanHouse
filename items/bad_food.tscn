@@ -10,6 +10,7 @@ radius = 0.7
 [node name="BadFood" type="Area3D" groups=["targets"]]
 script = ExtResource("1_r8meo")
 pickup_type = 7
+lose_points = 150
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false

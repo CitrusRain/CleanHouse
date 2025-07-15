@@ -1,21 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdx0xddqyosc"]
+[gd_scene load_steps=20 format=3 uid="uid://cx47ssjrq7dnf"]
 
-[ext_resource type="PackedScene" uid="uid://boo35gntjanvi" path="res://user_interface/user_interface.tscn" id="1_ubtly"]
-[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="1_wfhpi"]
-[ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="2_gtt2g"]
-[ext_resource type="PackedScene" uid="uid://ey14ntv03xn2" path="res://items/trash_bag.tscn" id="4_7he1i"]
-[ext_resource type="PackedScene" uid="uid://mub4nqr5jtuk" path="res://items/bad_food.tscn" id="5_0glgv"]
-[ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="6_gck8l"]
-[ext_resource type="PackedScene" uid="uid://kdl38kruw2og" path="res://items/jewelry.tscn" id="7_llpag"]
-[ext_resource type="PackedScene" uid="uid://c7ph2yxbecca4" path="res://items/dog_toy.tscn" id="7_tv6ri"]
-[ext_resource type="PackedScene" uid="uid://df113ded8cj2r" path="res://items/toy.tscn" id="8_tv6ri"]
-[ext_resource type="PackedScene" uid="uid://dfeh8hkcge7sm" path="res://items/toy_chest.tscn" id="9_jpsdj"]
-[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="10_h8jws"]
-[ext_resource type="PackedScene" uid="uid://djhecvj0b8bi3" path="res://mobs/gremlin.tscn" id="11_rgshf"]
-[ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="13_h3ryc"]
-[ext_resource type="PackedScene" uid="uid://duweiuaoial4g" path="res://items/dog_toy_basket.tscn" id="13_pkbto"]
-[ext_resource type="PackedScene" uid="uid://5jghfylo2am0" path="res://items/jewelry_box.tscn" id="14_h3ryc"]
-[ext_resource type="MeshLibrary" uid="uid://bqj2svar7g52v" path="res://models/meshlibrary2.tres" id="14_ubtly"]
+[ext_resource type="PackedScene" uid="uid://boo35gntjanvi" path="res://user_interface/user_interface.tscn" id="1_cjnu8"]
+[ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="2_d5kc3"]
+[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="3_a13f1"]
+[ext_resource type="PackedScene" uid="uid://df113ded8cj2r" path="res://items/toy.tscn" id="5_mweoh"]
+[ext_resource type="PackedScene" uid="uid://ey14ntv03xn2" path="res://items/trash_bag.tscn" id="6_j0mbu"]
+[ext_resource type="PackedScene" uid="uid://mub4nqr5jtuk" path="res://items/bad_food.tscn" id="7_ijuuf"]
+[ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="8_3wdop"]
+[ext_resource type="PackedScene" uid="uid://c7ph2yxbecca4" path="res://items/dog_toy.tscn" id="9_7n3to"]
+[ext_resource type="PackedScene" uid="uid://kdl38kruw2og" path="res://items/jewelry.tscn" id="10_xg072"]
+[ext_resource type="PackedScene" uid="uid://dfeh8hkcge7sm" path="res://items/toy_chest.tscn" id="11_ypjv8"]
+[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="12_lb63f"]
+[ext_resource type="PackedScene" uid="uid://duweiuaoial4g" path="res://items/dog_toy_basket.tscn" id="13_dn8ns"]
+[ext_resource type="PackedScene" uid="uid://5jghfylo2am0" path="res://items/jewelry_box.tscn" id="14_lkd2y"]
+[ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="15_urmko"]
+[ext_resource type="MeshLibrary" uid="uid://bqj2svar7g52v" path="res://models/meshlibrary2.tres" id="16_vsrha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whpuv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -47,38 +46,32 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.662437, 0.749118, 0, -0.749118, 0.662437, 0, 8.58143, 15.8525)
 
-[node name="UserInterface" parent="." instance=ExtResource("1_ubtly")]
+[node name="UserInterface" parent="." instance=ExtResource("1_cjnu8")]
 
-[node name="GameManager" parent="." instance=ExtResource("2_gtt2g")]
+[node name="GameManager" parent="." instance=ExtResource("2_d5kc3")]
 set_level_seconds = 10
 
-[node name="Player" parent="." instance=ExtResource("1_wfhpi")]
+[node name="Player" parent="." instance=ExtResource("3_a13f1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17749, 1.60858, -0.959602)
-
-[node name="Gremlin" parent="." instance=ExtResource("11_rgshf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00177, 1.05, 1.57213)
-
-[node name="Gremlin2" parent="." instance=ExtResource("11_rgshf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.623431, 1.05, 1.57213)
 
 [node name="Mess" type="Node3D" parent="." groups=["Mess"]]
 
-[node name="Toy" parent="Mess" instance=ExtResource("8_tv6ri")]
+[node name="Toy" parent="Mess" instance=ExtResource("5_mweoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25055, 0.969199, 4.97535)
 
-[node name="TrashBag" parent="Mess" instance=ExtResource("4_7he1i")]
+[node name="TrashBag" parent="Mess" instance=ExtResource("6_j0mbu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8593, 0.75, -0.994454)
 
-[node name="BadFood" parent="Mess" instance=ExtResource("5_0glgv")]
+[node name="BadFood" parent="Mess" instance=ExtResource("7_ijuuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83685, 0.969201, 2.64756)
 
-[node name="DogPoop" parent="Mess" instance=ExtResource("6_gck8l")]
+[node name="DogPoop" parent="Mess" instance=ExtResource("8_3wdop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46649, 0.9692, 0.8197)
 
-[node name="DogToy" parent="Mess" instance=ExtResource("7_tv6ri")]
+[node name="DogToy" parent="Mess" instance=ExtResource("9_7n3to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44986, 0.9692, -1.19376)
 
-[node name="Jewelry" parent="Mess" instance=ExtResource("7_llpag")]
+[node name="Jewelry" parent="Mess" instance=ExtResource("10_xg072")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57509, 0.9692, -0.855711)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["NavigationMap"]]
@@ -86,44 +79,36 @@ navigation_mesh = SubResource("NavigationMesh_50mym")
 
 [node name="Environment" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="ToyChest" parent="NavigationRegion3D/Environment" instance=ExtResource("9_jpsdj")]
+[node name="ToyChest" parent="NavigationRegion3D/Environment" instance=ExtResource("11_ypjv8")]
 transform = Transform3D(0.679736, 0, -0.733457, 0, 1, 0, 0.733457, 0, 0.679736, -5.01626, 0.55, 1.5702)
 
-[node name="Toy" parent="NavigationRegion3D/Environment/ToyChest" instance=ExtResource("8_tv6ri")]
+[node name="Toy" parent="NavigationRegion3D/Environment/ToyChest" instance=ExtResource("5_mweoh")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
 visible = false
 
-[node name="TrashCan" parent="NavigationRegion3D/Environment" instance=ExtResource("10_h8jws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.795, 0.531167, 0.57171)
+[node name="TrashCan" parent="NavigationRegion3D/Environment" instance=ExtResource("12_lb63f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0599041, 0.531167, 2.91251)
+size = -1
 
-[node name="BadFood" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("5_0glgv")]
+[node name="BadFood" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("7_ijuuf")]
 visible = false
 
-[node name="DogPoop" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("6_gck8l")]
+[node name="DogPoop" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("8_3wdop")]
 visible = false
 
-[node name="TrashCan2" parent="NavigationRegion3D/Environment" instance=ExtResource("10_h8jws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482121, 0.531167, -3.09442)
-
-[node name="BadFood" parent="NavigationRegion3D/Environment/TrashCan2" instance=ExtResource("5_0glgv")]
-visible = false
-
-[node name="DogPoop" parent="NavigationRegion3D/Environment/TrashCan2" instance=ExtResource("6_gck8l")]
-visible = false
-
-[node name="DogToyBasket" parent="NavigationRegion3D/Environment" instance=ExtResource("13_pkbto")]
+[node name="DogToyBasket" parent="NavigationRegion3D/Environment" instance=ExtResource("13_dn8ns")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.9278, 0.547109, 6.76245)
 
-[node name="DogToy" parent="NavigationRegion3D/Environment/DogToyBasket" instance=ExtResource("7_tv6ri")]
+[node name="DogToy" parent="NavigationRegion3D/Environment/DogToyBasket" instance=ExtResource("9_7n3to")]
 visible = false
 
-[node name="JewelryBox" parent="NavigationRegion3D/Environment" instance=ExtResource("14_h3ryc")]
+[node name="JewelryBox" parent="NavigationRegion3D/Environment" instance=ExtResource("14_lkd2y")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.452399, 1.49553, 8.25365)
 
-[node name="Jewelry" parent="NavigationRegion3D/Environment/JewelryBox" instance=ExtResource("7_llpag")]
+[node name="Jewelry" parent="NavigationRegion3D/Environment/JewelryBox" instance=ExtResource("10_xg072")]
 visible = false
 
-[node name="Dumpster" parent="NavigationRegion3D/Environment" instance=ExtResource("13_h3ryc")]
+[node name="Dumpster" parent="NavigationRegion3D/Environment" instance=ExtResource("15_urmko")]
 transform = Transform3D(-0.998188, 0, -0.0601776, 0, 1, 0, 0.0601776, 0, -0.998188, 12.7968, 0.549999, 6.25581)
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
@@ -133,7 +118,7 @@ size = Vector3(30.5762, 0.1, 16.5854)
 
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315, 0)
-mesh_library = ExtResource("14_ubtly")
+mesh_library = ExtResource("16_vsrha")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(8, 9, 0, 65531, 8, 0, 65529, 8, 0, 65530, 8, 0, 65532, 8, 0, 65533, 8, 0, 65534, 8, 0, 65535, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 7, 9, 0, 6, 9, 0, 5, 9, 0, 4, 9, 0, 3, 9, 0, 2, 9, 0, 1, 9, 0, 0, 9, 0, 65535, 9, 0, 65534, 9, 0, 65533, 9, 0, 65532, 9, 0, 65531, 9, 0, 65530, 9, 0, 65529, 9, 0, 9, 9, 0, 131065, 8, 0, 65530, 0, 0, 65531, 0, 0, 65531, 65535, 0, 65530, 65534, 0, 65530, 65535, 0, 65531, 65534, 0, 65529, 10, 0, 65528, 10, 0, 65527, 10, 0, 65526, 10, 0, 65525, 10, 0, 65524, 10, 0, 65523, 10, 0, 65522, 10, 0, 65521, 10, 0, 65520, 10, 0, 65520, 9, 0, 65520, 8, 0, 65520, 7, 0, 65520, 6, 0, 65519, 5, 0, 65519, 4, 0, 65519, 3, 0, 65519, 2, 0, 65519, 1, 0, 65519, 0, 0, 65519, 65535, 0, 65520, 5, 0, 65520, 4, 0, 65520, 3, 0, 65520, 2, 0, 65519, 65534, 0, 65519, 65533, 0, 65519, 65532, 0, 65520, 0, 0, 65520, 1, 0, 65520, 65535, 0, 65520, 65533, 0, 65520, 65532, 0, 65520, 65531, 0, 65520, 65534, 0, 65520, 65530, 0, 65521, 65530, 0, 65522, 65530, 0, 65523, 65530, 0, 65524, 65530, 0, 65524, 65529, 0, 65525, 65529, 0, 65526, 65529, 0, 65527, 65529, 0, 65528, 65529, 0, 65529, 65529, 0, 65530, 65529, 0, 65531, 65529, 0, 65530, 65530, 0, 65529, 65530, 0, 65528, 65530, 0, 65527, 65530, 0, 65525, 65530, 0, 65526, 65530, 0, 65532, 65529, 0, 65533, 65529, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65530, 0, 1, 65530, 0, 65535, 65529, 0, 65534, 65529, 0, 65532, 65530, 0, 65531, 65530, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65530, 0, 2, 65530, 0, 4, 65530, 0, 5, 65530, 0, 6, 65530, 0, 7, 65530, 0, 8, 65530, 0, 9, 65530, 0, 10, 65530, 0, 11, 65530, 0, 12, 65530, 0, 13, 65530, 0, 12, 65531, 0, 12, 65532, 0, 12, 65533, 0, 12, 65534, 0, 12, 65535, 0, 13, 65535, 0, 13, 65534, 0, 13, 65533, 0, 13, 65532, 0, 14, 65531, 0, 14, 65532, 0, 13, 65531, 0, 12, 0, 0, 12, 1, 0, 13, 1, 0, 13, 2, 0, 13, 3, 0, 13, 4, 0, 12, 4, 0, 12, 3, 0, 12, 2, 0, 13, 0, 0, 12, 8, 0, 13, 8, 0, 11, 8, 0, 10, 8, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 14, 8, 0, 14, 7, 0, 14, 6, 0, 14, 5, 0, 14, 4, 0, 15, 4, 0, 14, 3, 0)

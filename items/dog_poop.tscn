@@ -9,12 +9,7 @@ radius = 0.7
 [node name="DogPoop" type="Area3D" groups=["targets"]]
 script = ExtResource("1_8a3gd")
 pickup_type = 4
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("2_8a3gd")
+lose_points = 450
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false
@@ -28,5 +23,13 @@ billboard = 1
 text = "Dog Poop"
 font_size = 137
 outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_8a3gd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
