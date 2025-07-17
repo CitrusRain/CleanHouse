@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqeofop5rk8gs"]
+
+[ext_resource type="Script" uid="uid://c0ge50q2ip7mu" path="res://items/item_generator.gd" id="1_ov3ka"]
+[ext_resource type="PackedScene" uid="uid://mub4nqr5jtuk" path="res://items/bad_food.tscn" id="2_3kxmm"]
+[ext_resource type="PackedScene" uid="uid://df7wmobs5tvk2" path="res://models/fridge.glb" id="3_lf1ao"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ov3ka"]
+size = Vector3(1, 1.84961, 1)
+
+[node name="Refrigerator" type="StaticBody3D" groups=["container", "targets"]]
+script = ExtResource("1_ov3ka")
+spawnable_object = ExtResource("2_3kxmm")
+size = 0
+deposit_type = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0265881, 0)
+shape = SubResource("BoxShape3D_ov3ka")
+
+[node name="fridge" parent="." instance=ExtResource("3_lf1ao")]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0844274, 0, 0)
+
+[node name="Inventory" type="Node3D" parent="."]

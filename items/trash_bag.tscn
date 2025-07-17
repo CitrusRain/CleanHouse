@@ -11,6 +11,7 @@ radius = 0.7
 
 [node name="TrashBag" type="Area3D"]
 script = ExtResource("1_1p74u")
+pickup_type = 3
 lose_points = 200
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlo5pu3etas45"]
+
+[ext_resource type="Script" uid="uid://77om1pw0fit3" path="res://items/good_food.gd" id="1_o2rov"]
+[ext_resource type="Texture2D" uid="uid://bu4iuneg5hd54" path="res://textures/orange_juice.png" id="2_yu0xs"]
+[ext_resource type="Texture2D" uid="uid://dsttjfbkqsxg3" path="res://textures/sandwich.png" id="3_snunt"]
+[ext_resource type="Texture2D" uid="uid://bvata8uil4kme" path="res://textures/fermented_orange_juice.png" id="3_t0qpa"]
+[ext_resource type="Texture2D" uid="uid://b6iljr23tse41" path="res://textures/old_sandwich.png" id="5_w4cfx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
+radius = 0.7
+
+[node name="GoodFood" type="Area3D" groups=["targets"]]
+script = ExtResource("1_o2rov")
+pickup_type = 7
+lose_points = 150
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x1sru")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+billboard = 1
+text = "Bad Food"
+font_size = 137
+outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="OrangeJuice" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_yu0xs")
+
+[node name="Sandwich" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_snunt")
+
+[node name="BadOptions" type="Node3D" parent="."]
+visible = false
+
+[node name="OrangeJuice" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_t0qpa")
+
+[node name="Sandwich" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("5_w4cfx")
+
+[node name="ExpireTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]

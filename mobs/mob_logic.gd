@@ -68,8 +68,11 @@ func _on_attention_span_timeout() -> void:
 
 func find_something_to_do():
 	target = targets[randi() % targets.size()]
-	while target.deposit_type == general_functions.item_types.TRASH:
-		target = targets[randi() % targets.size()]
+	if target is not ItemGenerator:
+		while target.deposit_type == general_functions.item_types.TRASH:
+			target = targets[randi() % targets.size()]
+	#elif target is ItemGenerator:
+	
 
 func find_somewhere_to_play():
 	navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap").get_navigation_map(), 1, true) 

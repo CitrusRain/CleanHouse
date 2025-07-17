@@ -1,7 +1,7 @@
 extends Node
 class_name general_functions
 
-enum item_types { WILD, TOY, DIRT, TRASH, DOG_POOP, DOG_TOY, JEWELRY, BAD_FOOD } 
+enum item_types { WILD, TOY, DIRT, TRASH, DOG_POOP, DOG_TOY, JEWELRY, BAD_FOOD, GOOD_FOOD } 
 
 static func get_grandparent(n) -> Node:
 	return n.get_parent().get_parent()
