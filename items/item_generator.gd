@@ -14,3 +14,4 @@ func _process(_delta: float) -> void:
 func generate():
 	var new_item = spawnable_object.instantiate()
 	inventory.add_child(new_item)
+	new_item.visible= false

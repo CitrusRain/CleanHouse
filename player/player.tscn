@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://flw2rmglext3"]
+[gd_scene load_steps=8 format=3 uid="uid://flw2rmglext3"]
 
 [ext_resource type="Script" uid="uid://cp4cbn335ve7a" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cyahnul1bn02a" path="res://player/player_interact.gd" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://m5rfdrjsqif5" path="res://textures/Player♂.png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://bxj4v82fk7w6" path="res://textures/Player♀.png" id="4_qjkh3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
 
@@ -13,6 +15,7 @@
 script = ExtResource("1_oul6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 layers = 3
 mesh = SubResource("CapsuleMesh_kqu6x")
 
@@ -25,3 +28,18 @@ shape = SubResource("CapsuleShape3D_rkbax")
 script = ExtResource("2_rkbax")
 
 [node name="PlayerInventory" type="Node3D" parent="." groups=["player_inventory"]]
+
+[node name="Options" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562686, 0)
+
+[node name="Man" type="Sprite3D" parent="Options"]
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_yw30f")
+
+[node name="Woman" type="Sprite3D" parent="Options"]
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_qjkh3")

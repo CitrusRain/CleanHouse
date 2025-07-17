@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Clean House"
-run/main_scene="uid://bdx0xddqyosc"
+run/main_scene="uid://poagvr7f6cqf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,6 +26,7 @@ player_inventory=""
 container=""
 trashcan=""
 valuables=""
+kid_targets="targets that kids will look for"
 
 [input]
 
@@ -64,6 +65,10 @@ down={
 3d_render/layer_2="Player"
 3d_render/layer_3="Enemy"
 3d_render/layer_4="Interact"
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Mob"
+3d_physics/layer_3="Environment"
+3d_physics/layer_4="Items"
 
 [rendering]
 

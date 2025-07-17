@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqeofop5rk8gs"]
 
 [ext_resource type="Script" uid="uid://c0ge50q2ip7mu" path="res://items/item_generator.gd" id="1_ov3ka"]
-[ext_resource type="PackedScene" uid="uid://mub4nqr5jtuk" path="res://items/bad_food.tscn" id="2_3kxmm"]
+[ext_resource type="PackedScene" uid="uid://dlo5pu3etas45" path="res://items/good_food.tscn" id="2_pjtfr"]
 [ext_resource type="PackedScene" uid="uid://df7wmobs5tvk2" path="res://models/fridge.glb" id="3_lf1ao"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ov3ka"]
 size = Vector3(1, 1.84961, 1)
 
-[node name="Refrigerator" type="StaticBody3D" groups=["container", "targets"]]
+[node name="Refrigerator" type="StaticBody3D" groups=["container", "kid_targets", "targets"]]
 script = ExtResource("1_ov3ka")
-spawnable_object = ExtResource("2_3kxmm")
+spawnable_object = ExtResource("2_pjtfr")
 size = 0
 deposit_type = 8
 

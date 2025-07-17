@@ -9,6 +9,9 @@ extends StaticBody3D
 func _ready() -> void:
 	if $Label3D.text == "#":
 		$Label3D.text = str(deposit_type)
+	for thing in self.get_children():
+		if thing is pickup:
+			thing.reparent(inventory)
 
 func _physics_process(_delta: float) -> void:
 	if size > 0 and inventory.get_child_count() > size and trash_bag:

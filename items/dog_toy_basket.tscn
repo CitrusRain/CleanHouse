@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rhqs"]
 
-[node name="DogToyBasket" type="StaticBody3D" groups=["container", "targets"]]
+[node name="DogToyBasket" type="StaticBody3D" groups=["container", "kid_targets", "targets"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_f2cm0")
 deposit_type = 5

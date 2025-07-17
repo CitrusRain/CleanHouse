@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://djhecvj0b8bi3"]
+[gd_scene load_steps=9 format=3 uid="uid://djhecvj0b8bi3"]
 
 [ext_resource type="Script" uid="uid://d0aoranvogxru" path="res://mobs/mob_logic.gd" id="1_mgsp5"]
 [ext_resource type="Script" uid="uid://drusfxr0h0mbr" path="res://mobs/mob_interact.gd" id="2_mgsp5"]
 [ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="2_pnkqr"]
 [ext_resource type="Texture2D" uid="uid://dtabyad5thsju" path="res://textures/gremlin.png" id="3_pnkqr"]
-[ext_resource type="PackedScene" uid="uid://df113ded8cj2r" path="res://items/toy.tscn" id="4_lbqog"]
 [ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="6_emmlh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
@@ -31,10 +30,6 @@ shape = SubResource("CapsuleShape3D_rkbax")
 script = ExtResource("2_mgsp5")
 
 [node name="MobInventory" type="Node3D" parent="."]
-
-[node name="Toy" parent="MobInventory" instance=ExtResource("4_lbqog")]
-
-[node name="DogPoop" parent="MobInventory" instance=ExtResource("2_pnkqr")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)

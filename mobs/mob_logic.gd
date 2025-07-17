@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name BaseMob
 
 @onready var targets = get_tree().get_nodes_in_group("container")
 

@@ -31,11 +31,11 @@ func report_mishandled_item(_image: Texture2D, item: pickup, container_name: Str
 	if item.get_node("Options"):
 		foo.get_node("ItemImage").texture = item.get_node("Options").get_child(0).texture
 	foo.get_node("ItemName").text = foo.get_node("ItemImage").texture.get_path().get_file().capitalize().get_basename() #str(item.pickup_type)
-	foo.get_node("Deduction").text = str("-",item.lose_points)
+	foo.get_node("Deduction").text = str("-",item.trashed_penalty)
 	var cn = foo.get_node("ContainerName")
 	cn.text = container_name
 	foo.reparent(get_tree().get_first_node_in_group("trash_vbox"))
-	score += item.lose_points
+	score += item.trashed_penalty
 	pass
 
 

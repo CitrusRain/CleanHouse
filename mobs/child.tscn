@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://trm322qqu0y6"]
+
+[ext_resource type="Script" uid="uid://s1ygibe3q85k" path="res://mobs/child.gd" id="1_q83mv"]
+[ext_resource type="Script" uid="uid://drusfxr0h0mbr" path="res://mobs/mob_interact.gd" id="3_acww5"]
+[ext_resource type="Texture2D" uid="uid://bpn3agkckrnan" path="res://textures/Child♂.png" id="4_j18d4"]
+[ext_resource type="Texture2D" uid="uid://d2t4mj818l13v" path="res://textures/Child♀.png" id="5_q83mv"]
+[ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="6_5yvop"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+
+[node name="Child" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_q83mv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+layers = 3
+mesh = SubResource("CapsuleMesh_kqu6x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oul6g")
+
+[node name="MobInteract" type="ShapeCast3D" parent="." groups=["player_hitbox"]]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.51686, 0)
+shape = SubResource("CapsuleShape3D_rkbax")
+script = ExtResource("3_acww5")
+
+[node name="MobInventory" type="Node3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AttentionSpan" type="Timer" parent="."]
+autostart = true
+
+[node name="PlayPoint" type="Sprite3D" parent="."]
+top_level = true
+texture = ExtResource("6_5yvop")
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="Boy" type="Sprite3D" parent="Options"]
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_j18d4")
+
+[node name="Girl" type="Sprite3D" parent="Options"]
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_q83mv")
+
+[connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]
