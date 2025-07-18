@@ -50,9 +50,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17749, 1.60858, -0.959602)
 
 [node name="Gremlin" parent="." instance=ExtResource("4_mb5kk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00177, 1.05, 1.57213)
+SPEED = 5
 
 [node name="Gremlin2" parent="." instance=ExtResource("4_mb5kk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.623431, 1.05, 1.57213)
+SPEED = 5
 
 [node name="Mess" type="Node3D" parent="." groups=["Mess"]]
 

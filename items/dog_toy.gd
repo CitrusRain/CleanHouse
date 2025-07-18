@@ -5,12 +5,12 @@ var velocity : Vector3
 var max_throw_frames := 7
 var throw_frames := 0
 
-func thrown(velocity: Vector3):
-	direction = velocity
+func thrown(v: Vector3):
+	direction = v
 	throw_frames = max_throw_frames
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if throw_frames > 0:
 		if direction:

@@ -25,28 +25,32 @@ func _ready() -> void:
 	find_something_to_do()
 
 func _process(_delta: float) -> void:
-	
-	if mob_inventory.get_child_count() != 0:
-		position_item()
-		if mob_inventory.get_child(0).pickup_type == general_functions.item_types.DOG_POOP:
-			var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
-			mine.reparent(get_tree().get_first_node_in_group("Mess"))
-			mine.visible = true
-			mine.done_with = false
-		pass
-	elif mob_inventory.get_child_count() == 0 :
-		if target:
-			pass
-		else:
-			find_something_to_do()
+	if activity == state_machine.SIT:
+		target = go_sit_down
+		looking_for_target = false
 		navigation_agent_3d.target_position = target.global_position
+		timeout()
+	#elif  activity == state_machine.FETCH:
+		#TODO: Rework FETCH logic to state machine
+		#pass
+	else:	
+		if mob_inventory.get_child_count() != 0:
+			position_item()
+			if mob_inventory.get_child(0).pickup_type == general_functions.item_types.DOG_POOP:
+				var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
+				mine.reparent(get_tree().get_first_node_in_group("Mess"))
+				mine.visible = true
+				mine.done_with = false
+			pass
+		elif mob_inventory.get_child_count() == 0 :
+			if target:
+				pass
+			else:
+				find_something_to_do()
+			navigation_agent_3d.target_position = target.global_position
+		
+		mob_interact.check_interactions()
 	
-	mob_interact.check_interactions()
-	
-	if mob_inventory.get_child_count() > 0:
-		#print("timer time " , attention_span.time_left)
-		pass
-#	print("Trash = " , general_functions.item_types.TRASH)
 
 func _physics_process(delta: float) -> void:
 	if not looking_for_target:
@@ -69,7 +73,7 @@ func _physics_process(delta: float) -> void:
 			and i < 400:
 		#check distance and don't let the new one match the old one
 			find_somewhere_to_play()
-			print("new point is " , new_play_point , "; distance to new point is ", previous_play_point_pos.distance_to(new_play_point))
+			#print("new point is " , new_play_point , "; distance to new point is ", previous_play_point_pos.distance_to(new_play_point))
 			i += 1
 		
 		
@@ -95,25 +99,28 @@ func find_somewhere_to_play():
 	$PlayPoint.position = navigation_agent_3d.target_position
 
 func _on_attention_span_timeout() -> void:
-	if mob_inventory.get_child_count() > 0:
-		var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
-		mine.reparent(get_tree().get_first_node_in_group("Mess"))
-		mine.visible = true
-		mine.done_with = false
-	find_something_to_do()
-	if randi() % 10 >= 2:
-		var poo = poop.instantiate()
-		poo.pickup_type = general_functions.item_types.DOG_POOP
-		add_child(poo)
-		poo.reparent(get_tree().get_first_node_in_group("Mess"))
+	if activity == state_machine.PLAY:
+		if mob_inventory.get_child_count() > 0:
+			var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
+			mine.reparent(get_tree().get_first_node_in_group("Mess"))
+			mine.visible = true
+			mine.done_with = false
+		find_something_to_do()
+		if randi() % 10 >= 2:
+			var poo = poop.instantiate()
+			poo.pickup_type = general_functions.item_types.DOG_POOP
+			add_child(poo)
+			poo.reparent(get_tree().get_first_node_in_group("Mess"))
 
 
 func find_something_to_do():
 	target = dog_targets[randi() % dog_targets.size()]
-	print(target.deposit_type, ", is that okay?")
-	print(dog_targets)
 	if target is not ItemGenerator: 
 		if not (target.deposit_type == general_functions.item_types.WILD \
 		or target.deposit_type == general_functions.item_types.DOG_POOP \
 		or target.deposit_type == general_functions.item_types.DOG_TOY):
 			find_something_to_do()
+
+func _on_timeout_timer_timeout() -> void:
+	activity = state_machine.PLAY
+	find_something_to_do()

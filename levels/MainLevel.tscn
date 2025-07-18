@@ -1,0 +1,152 @@
+[gd_scene load_steps=28 format=3 uid="uid://poagvr7f6cqf"]
+
+[ext_resource type="Script" uid="uid://u0i71hc2ysai" path="res://levels/mouse_input.gd" id="1_io7o4"]
+[ext_resource type="PackedScene" uid="uid://cmpmx2dug7xal" path="res://player/time_out_command.tscn" id="2_ihpsd"]
+[ext_resource type="PackedScene" uid="uid://dqkos6glua1i5" path="res://player/drop_command.tscn" id="3_ihpsd"]
+[ext_resource type="PackedScene" uid="uid://boo35gntjanvi" path="res://user_interface/user_interface.tscn" id="3_x2uw4"]
+[ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="4_dtwx4"]
+[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="5_2pw5b"]
+[ext_resource type="PackedScene" uid="uid://trm322qqu0y6" path="res://mobs/child.tscn" id="6_50hyn"]
+[ext_resource type="PackedScene" uid="uid://dihjaipivgufv" path="res://mobs/Dog.tscn" id="7_u3t4o"]
+[ext_resource type="PackedScene" uid="uid://djhecvj0b8bi3" path="res://mobs/gremlin.tscn" id="8_juar8"]
+[ext_resource type="PackedScene" uid="uid://dfeh8hkcge7sm" path="res://items/toy_chest.tscn" id="9_pct36"]
+[ext_resource type="PackedScene" uid="uid://df113ded8cj2r" path="res://items/toy.tscn" id="10_f6v30"]
+[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="11_7xlt5"]
+[ext_resource type="PackedScene" uid="uid://mub4nqr5jtuk" path="res://items/bad_food.tscn" id="12_ysprp"]
+[ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="13_bk0vb"]
+[ext_resource type="PackedScene" uid="uid://duweiuaoial4g" path="res://items/dog_toy_basket.tscn" id="14_r0tbs"]
+[ext_resource type="PackedScene" uid="uid://c7ph2yxbecca4" path="res://items/dog_toy.tscn" id="15_221d2"]
+[ext_resource type="PackedScene" uid="uid://5jghfylo2am0" path="res://items/jewelry_box.tscn" id="16_bx1dr"]
+[ext_resource type="PackedScene" uid="uid://kdl38kruw2og" path="res://items/jewelry.tscn" id="17_kmens"]
+[ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="18_b6orh"]
+[ext_resource type="PackedScene" uid="uid://cqeofop5rk8gs" path="res://items/Refrigerator.tscn" id="19_q27fi"]
+[ext_resource type="PackedScene" uid="uid://std4be5efuwl" path="res://models/bad_couch.glb" id="20_dot45"]
+[ext_resource type="MeshLibrary" uid="uid://djojg6jkpjpr1" path="res://models/applied_scale.tres" id="21_mayjn"]
+[ext_resource type="PackedScene" uid="uid://b1nbedkjyahwg" path="res://items/timeout_seat.tscn" id="22_fjj1p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whpuv"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_85hcc"]
+sky_material = SubResource("ProceduralSkyMaterial_whpuv")
+
+[sub_resource type="Environment" id="Environment_7he1i"]
+background_mode = 2
+sky = SubResource("Sky_85hcc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_50mym"]
+vertices = PackedVector3Array(-15.5, 1.19655, -5.43218, -15.5, 1.44655, -3.18218, -15, 1.44655, -5.18218, 5.25, 2.19655, -5.43218, 5.5, 2.44655, -4.18218, 6, 2.19655, -5.18218, -6.5, 0.446547, -0.432176, -7.5, 0.446547, -0.432176, -7.75, 0.446547, 0.567824, -6.5, 0.446547, 4.31782, -9.5, 0.446547, 0.567824, -9.75, 0.446547, -0.432176, -10.5, 0.446547, -0.682176, -11.5, 0.446547, -0.682176, -12.5, 0.446547, -0.432176, -12.75, 0.446547, 0.817824, -14.5, 0.446547, 0.817824, -14.75, 0.446547, -0.432176, -15.5, 0.446547, -0.432176, -15.5, 0.446547, 9.31782, -14.25, 0.446547, -4.43218, -14.5, 0.446547, -2.43218, -11.75, 0.446547, -2.43218, -4.75, 0.446547, 9.31782, -10.25, 0.446547, -2.43218, -6.5, 0.446547, -2.43218, -6.5, 0.446547, -4.43218, -5, 0.446547, 4.56782, 0.75, 0.446547, 2.31782, 0.5, 0.446547, 1.56782, -0.5, 0.446547, 1.31782, -1.5, 0.446547, 1.31782, -4.5, 0.446547, 1.56782, -4.5, 0.446547, 4.31782, -3, 0.446547, 9.31782, -2.75, 0.446547, 8.06782, 0.5, 0.446547, -0.432176, 0.5, 0.446547, -2.93218, -0.5, 0.446547, -2.93218, -0.5, 0.446547, -0.182176, -1.25, 0.446547, -3.68218, -1.75, 0.446547, -0.432176, -1.25, 0.446547, -4.43218, -4.5, 0.446547, -4.43218, -4.5, 0.446547, -0.432176, 1.25, 0.446547, 8.06782, 1.5, 0.446547, 2.31782, 4.5, 0.446547, 0.567824, 5.5, 0.446547, 0.567824, 5.75, 0.446547, -0.432176, 4.25, 0.446547, -0.432176, 4.75, 0.446547, -3.18218, 6.5, 0.446547, -3.18218, 4.5, 0.446547, -4.43218, 2.5, 0.446547, -4.43218, 2.5, 0.446547, -0.432176, 13.5, 0.446547, -4.43218, 6.75, 0.446547, -4.43218, 13.5, 0.446547, -0.432176, -14, 1.19655, -1.43218, -13.75, 1.44655, -0.182176, -13.25, 1.19655, -1.18218, 5.75, 0.446547, 1.56782, 4.25, 0.446547, 1.56782, 10.25, 0.446547, 5.56782, 10.5, 0.446547, 4.31782, 8.75, 0.446547, 4.56782, 8.5, 0.446547, 5.81782, 2.75, 0.446547, 1.56782, 2.5, 0.446547, 2.31782, 13.5, 0.446547, 1.56782, 10.5, 0.446547, 1.56782, 8.5, 0.446547, 1.56782, 10.5, 0.446547, 9.31782, 13.5, 0.446547, 9.31782, 2.25, 0.446547, 8.31782, 2.25, 0.446547, 9.31782, 8.5, 0.446547, 9.31782, 13.5, 1.44655, 11.5678, 13.5, 1.44655, 10.3178, 9.75, 1.44655, 10.0678, -15.5, 1.44655, 10.3178, -15.75, 1.44655, 11.3178)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 14), PackedInt32Array(14, 10, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(10, 8, 15), PackedInt32Array(15, 8, 9), PackedInt32Array(22, 21, 20), PackedInt32Array(15, 9, 16), PackedInt32Array(16, 9, 23), PackedInt32Array(16, 23, 19), PackedInt32Array(26, 25, 24), PackedInt32Array(22, 20, 24), PackedInt32Array(24, 20, 26), PackedInt32Array(9, 27, 23), PackedInt32Array(13, 22, 12), PackedInt32Array(12, 22, 24), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(31, 28, 32), PackedInt32Array(32, 28, 33), PackedInt32Array(34, 23, 35), PackedInt32Array(35, 23, 27), PackedInt32Array(35, 27, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(39, 41, 36), PackedInt32Array(36, 41, 38), PackedInt32Array(38, 41, 40), PackedInt32Array(42, 40, 43), PackedInt32Array(43, 40, 41), PackedInt32Array(43, 41, 44), PackedInt32Array(30, 31, 39), PackedInt32Array(39, 31, 41), PackedInt32Array(46, 45, 28), PackedInt32Array(28, 45, 35), PackedInt32Array(28, 35, 33), PackedInt32Array(47, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(50, 51, 49), PackedInt32Array(49, 51, 52), PackedInt32Array(53, 51, 54), PackedInt32Array(54, 51, 50), PackedInt32Array(54, 50, 55), PackedInt32Array(52, 57, 56), PackedInt32Array(49, 52, 58), PackedInt32Array(58, 52, 56), PackedInt32Array(61, 60, 59), PackedInt32Array(48, 62, 47), PackedInt32Array(47, 62, 63), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(68, 63, 69), PackedInt32Array(62, 69, 63), PackedInt32Array(65, 71, 70), PackedInt32Array(66, 67, 72), PackedInt32Array(72, 67, 62), PackedInt32Array(64, 65, 73), PackedInt32Array(73, 65, 74), PackedInt32Array(74, 65, 70), PackedInt32Array(46, 69, 45), PackedInt32Array(45, 69, 75), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 67), PackedInt32Array(67, 75, 62), PackedInt32Array(62, 75, 69), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(81, 78, 82)]
+border_size = 0.25
+
+[node name="Sandbox" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7he1i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.662437, 0.749118, 0, -0.749118, 0.662437, 0, 8.58143, 15.8525)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("camera")]
+collision_mask = 7
+script = ExtResource("1_io7o4")
+camera = NodePath("..")
+click_effect = ExtResource("2_ihpsd")
+click_effect2 = ExtResource("3_ihpsd")
+
+[node name="UserInterface" parent="." instance=ExtResource("3_x2uw4")]
+
+[node name="GameManager" parent="." instance=ExtResource("4_dtwx4")]
+set_level_seconds = 30
+
+[node name="Player" parent="." instance=ExtResource("5_2pw5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322403, 1.05, 8.42157)
+
+[node name="Child" parent="." node_paths=PackedStringArray("go_sit_down") instance=ExtResource("6_50hyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.97206, 1.05, 5.34936)
+go_sit_down = NodePath("../TimeOutSpaces/TimeoutSeat")
+
+[node name="Dog" parent="." node_paths=PackedStringArray("go_sit_down") instance=ExtResource("7_u3t4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40178, 1.05, 6.86241)
+go_sit_down = NodePath("../TimeOutSpaces/TimeoutSeat2")
+
+[node name="Gremlin" parent="." node_paths=PackedStringArray("go_sit_down") instance=ExtResource("8_juar8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66815, 1.05, 5.09072)
+go_sit_down = NodePath("../TimeOutSpaces/TimeoutSeat3")
+
+[node name="Mess" type="Node3D" parent="." groups=["Mess"]]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["NavigationMap"]]
+navigation_mesh = SubResource("NavigationMesh_50mym")
+
+[node name="Environment" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="ToyChest" parent="NavigationRegion3D/Environment" instance=ExtResource("9_pct36")]
+transform = Transform3D(-0.733457, 0, -0.679736, 0, 1, 0, 0.679736, 0, -0.733457, 0.0470524, 0.55, -4.26201)
+
+[node name="Toy" parent="NavigationRegion3D/Environment/ToyChest" instance=ExtResource("10_f6v30")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="TrashCan" parent="NavigationRegion3D/Environment" instance=ExtResource("11_7xlt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7277, 0.531167, -0.317952)
+
+[node name="BadFood" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("12_ysprp")]
+visible = false
+
+[node name="DogPoop" parent="NavigationRegion3D/Environment/TrashCan" instance=ExtResource("13_bk0vb")]
+visible = false
+
+[node name="DogToyBasket" parent="NavigationRegion3D/Environment" instance=ExtResource("14_r0tbs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.52993, 0.547109, 1.26974)
+
+[node name="DogToy" parent="NavigationRegion3D/Environment/DogToyBasket" instance=ExtResource("15_221d2")]
+visible = false
+
+[node name="JewelryBox" parent="NavigationRegion3D/Environment" instance=ExtResource("16_bx1dr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.57688, 1.49553, -4.31619)
+
+[node name="Jewelry" parent="NavigationRegion3D/Environment/JewelryBox" instance=ExtResource("17_kmens")]
+visible = false
+
+[node name="Dumpster" parent="NavigationRegion3D/Environment" instance=ExtResource("18_b6orh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3805, 0.549999, -3.9527)
+
+[node name="Refridgerator" parent="NavigationRegion3D/Environment" instance=ExtResource("19_q27fi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.5408, 0.948217, -0.460492)
+
+[node name="bad_couch" parent="NavigationRegion3D/Environment" instance=ExtResource("20_dot45")]
+transform = Transform3D(-0.69, 0, -6.03217e-08, 0, 0.69, 0, 6.03217e-08, 0, -0.69, -0.419953, 0.74, 9.42644)
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.711914, 0, 2.48364)
+use_collision = true
+size = Vector3(30.5762, 0.1, 16.5854)
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315, 0)
+mesh_library = ExtResource("21_mayjn")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65519, 10, 2, 65519, 65530, 2, 65519, 65531, 2, 65519, 65532, 2, 65519, 65533, 2, 65519, 65534, 2, 65519, 65535, 2, 65519, 0, 2, 65519, 1, 2, 65519, 2, 2, 65519, 3, 2, 65519, 4, 2, 65519, 5, 2, 65519, 6, 2, 65519, 7, 2, 65519, 8, 2, 65519, 9, 2, 65525, 65530, 8, 65526, 65530, 8, 65527, 65530, 8, 65528, 65530, 8, 65529, 65530, 8, 65530, 65530, 2, 65531, 65530, 2, 65532, 65530, 2, 65533, 65530, 2, 65534, 65530, 2, 65535, 65530, 2, 0, 65530, 2, 1, 65530, 2, 2, 65530, 2, 3, 65530, 2, 4, 65530, 2, 5, 65530, 2, 6, 65530, 2, 7, 65530, 2, 8, 65530, 2, 9, 65530, 2, 10, 65530, 2, 11, 65530, 2, 12, 65530, 2, 13, 65530, 2, 14, 65530, 2, 14, 65531, 2, 14, 65532, 2, 14, 65533, 2, 14, 65534, 2, 14, 65535, 2, 14, 0, 2, 14, 1, 2, 14, 2, 2, 14, 3, 2, 14, 4, 2, 14, 5, 2, 14, 6, 2, 14, 7, 2, 14, 8, 2, 14, 9, 2, 14, 10, 2, 65520, 11, 0, 65521, 11, 0, 65522, 11, 0, 65523, 11, 0, 65524, 11, 0, 65525, 11, 0, 65526, 11, 0, 65527, 11, 0, 65528, 11, 0, 65529, 11, 0, 65530, 11, 0, 65531, 11, 0, 65532, 11, 0, 65533, 11, 0, 65534, 11, 0, 65535, 11, 0, 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 10, 11, 0, 11, 11, 0, 12, 11, 0, 13, 11, 0, 14, 11, 0, 65519, 11, 0, 1, 10, 0, 65520, 10, 0, 65521, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 65550, 10, 8, 65550, 9, 8, 65550, 11, 8, 65522, 10, 0, 65523, 10, 0, 65524, 10, 0, 65525, 10, 0, 65526, 10, 0, 65527, 10, 0, 65528, 10, 0, 65529, 10, 0, 65530, 10, 0, 65531, 10, 0, 65532, 10, 0, 65533, 10, 0, 65534, 10, 0, 65535, 10, 0, 0, 10, 0, 9, 9, 1441800, 9, 8, 1441800, 9, 7, 1441800, 65530, 65531, 2, 65530, 65532, 2, 65530, 65533, 2, 65530, 65534, 2, 65530, 65535, 2, 65530, 0, 2, 65530, 1, 2, 65530, 2, 2, 65530, 3, 2, 1, 0, 2, 1, 65535, 2, 1, 65534, 2, 1, 65533, 2, 1, 65532, 2, 1, 65531, 2, 65531, 0, 1441800, 65532, 0, 1441800, 65533, 0, 1441800, 0, 0, 1441800, 65520, 65534, 1441800, 65521, 65534, 1441800, 65522, 65534, 1441800, 65523, 65534, 1441800, 65526, 65534, 1441800, 65527, 65534, 1441800, 65528, 65534, 1441800, 65529, 65534, 1441800, 2, 0, 1441800, 3, 0, 1441800, 6, 0, 1441800, 7, 0, 1441800, 8, 0, 1441800, 9, 0, 1441800, 9, 1, 1441800, 9, 2, 1441800, 9, 3, 1441800, 9, 6, 1441800, 11, 0, 1441800, 12, 0, 1441800, 13, 0, 1441800, 65520, 65530, 8, 65521, 65530, 8, 65522, 65530, 8, 65523, 65530, 8, 65524, 65530, 8, 5, 65531, 1441792, 10, 0, 1441800, 65520, 65533, 8, 65520, 65532, 8)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="TimeOutSpaces" type="Node3D" parent="."]
+
+[node name="TimeoutSeat" parent="TimeOutSpaces" instance=ExtResource("22_fjj1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69536, 0, 9.07518)
+
+[node name="TimeoutSeat2" parent="TimeOutSpaces" instance=ExtResource("22_fjj1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425782, 0, 9.07518)
+
+[node name="TimeoutSeat3" parent="TimeOutSpaces" instance=ExtResource("22_fjj1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869815, 0, 9.07518)

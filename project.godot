@@ -28,6 +28,7 @@ trashcan=""
 valuables=""
 kid_targets="targets that kids will look for"
 dog_targets="Things a dog would go to"
+command_zone=""
 
 [input]
 

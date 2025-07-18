@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6ufja11knx7u"
+path="res://.godot/imported/Title Theme ISGJ.mp3-36a83583fa6731f10b1187bd76fdbe67.mp3str"
+
+[deps]
+
+source_file="res://sound/Music/Title Theme ISGJ.mp3"
+dest_files=["res://.godot/imported/Title Theme ISGJ.mp3-36a83583fa6731f10b1187bd76fdbe67.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

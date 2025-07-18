@@ -28,23 +28,34 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	
-	if mob_inventory.get_child_count() != 0:
-		position_item()
-		if mob_inventory.get_children()[0].pickup_type == general_functions.item_types.DOG_TOY:
-			var dogs = get_tree().get_nodes_in_group("dog")
-			if dogs.size() > 0:
-				dog_choice = get_tree().get_nodes_in_group("dog")[randi() % get_tree().get_nodes_in_group("dog").size()]
-				fetch_mode = true
-		pass
-	elif mob_inventory.get_child_count() == 0 :
-		if target:
-			pass
-		else:
-			find_something_to_do()
+	if activity == state_machine.SIT:
+		target = go_sit_down
+		looking_for_target = false
 		navigation_agent_3d.target_position = target.global_position
+		timeout()
+	#elif  activity == state_machine.FETCH:
+		#TODO: Rework FETCH logic to state machine
+		#pass
+	else:	
+		if mob_inventory.get_child_count() != 0:
+			activity = state_machine.PLAY
+			position_item()
+			if mob_inventory.get_children()[0].pickup_type == general_functions.item_types.DOG_TOY:
+				var dogs = get_tree().get_nodes_in_group("dog")
+				if dogs.size() > 0:
+					dog_choice = get_tree().get_nodes_in_group("dog")[randi() % get_tree().get_nodes_in_group("dog").size()]
+					fetch_mode = true
+			pass
+		elif mob_inventory.get_child_count() == 0 :
+			activity = state_machine.FIND
+			fetch_mode = false
+			if target:
+				pass
+			else:
+				find_something_to_do()
+			navigation_agent_3d.target_position = target.global_position
 	
-	mob_interact.check_interactions()
+		mob_interact.check_interactions()
 	
 	if mob_inventory.get_child_count() > 0:
 		#print("timer time " , attention_span.time_left)
@@ -58,10 +69,11 @@ func _physics_process(delta: float) -> void:
 		navigation_agent_3d.target_position = dog_choice.position
 		var next_position = navigation_agent_3d.get_next_path_position()
 		direction = global_position.direction_to(next_position)
-		if next_position.distance_to(navigation_agent_3d.get_final_position()) < .05:
+		if next_position.distance_to(navigation_agent_3d.get_final_position()) < .005:
 			if mob_inventory.get_child_count() != 0:
-				throw_vector = Vector3(randf() * 1.0, randf() * 3, randf() * 1.0)
+				throw_vector = Vector3(randf() * 3.0 - 2, randf() * 3, randf() * 3.0 - 2)
 				mob_inventory.get_child(0).thrown(throw_vector)
+				mob_inventory.get_child(0).done_with = false
 				mob_inventory.get_child(0).reparent(get_tree().get_first_node_in_group("Mess"))
 				fetch_mode = false
 	else:
@@ -85,7 +97,7 @@ func _physics_process(delta: float) -> void:
 				and i < 400:
 			#check distance and don't let the new one match the old one
 				find_somewhere_to_play()
-				print("new point is " , new_play_point , "; distance to new point is ", previous_play_point_pos.distance_to(new_play_point))
+				#print("new point is " , new_play_point , "; distance to new point is ", previous_play_point_pos.distance_to(new_play_point))
 				i += 1
 			
 			
@@ -112,18 +124,17 @@ func find_somewhere_to_play():
 	$PlayPoint.position = navigation_agent_3d.target_position
 
 func _on_attention_span_timeout() -> void:
-	if mob_inventory.get_child_count() > 0:
-		var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
-		mine.reparent(get_tree().get_first_node_in_group("Mess"))
-		mine.visible = true
-		mine.done_with = false
-	find_something_to_do()
+	if activity == state_machine.PLAY:
+		if mob_inventory.get_child_count() > 0:
+			var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
+			mine.reparent(get_tree().get_first_node_in_group("Mess"))
+			mine.visible = true
+			mine.done_with = false
+		find_something_to_do()
 
 
 func find_something_to_do():
 	target = kid_targets[randi() % kid_targets.size()]
-	print(target.deposit_type, ", is that okay?")
-	print(kid_targets)
 	if target is not ItemGenerator:
 		if target.deposit_type == general_functions.item_types.TRASH \
 		or target.deposit_type == general_functions.item_types.WILD \
@@ -139,3 +150,7 @@ func find_something_to_do():
 			else:
 				find_something_to_do()
 			
+
+func _on_timeout_timer_timeout() -> void:
+	activity = state_machine.PLAY
+	find_something_to_do()

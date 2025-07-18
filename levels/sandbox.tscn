@@ -59,6 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17749, 1.60858, -0.959602)
 
 [node name="Child" parent="." instance=ExtResource("11_smb53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08867, 1.05, 4.65177)
+SPEED = 5
 
 [node name="Mess" type="Node3D" parent="." groups=["Mess"]]
 

@@ -60,4 +60,9 @@ texture = ExtResource("5_q83mv")
 [node name="HoldPoint" type="Node3D" parent="Options/Girl"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0774459, -0.0751569, 0)
 
+[node name="TimeoutTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]
+[connection signal="timeout" from="TimeoutTimer" to="." method="_on_timeout_timer_timeout"]

@@ -52,4 +52,9 @@ texture = ExtResource("5_pq8fs")
 [node name="HoldPoint" type="Node3D" parent="SmallDog"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000389762, -0.0354957, 0)
 
+[node name="TimeoutTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]
+[connection signal="timeout" from="TimeoutTimer" to="." method="_on_timeout_timer_timeout"]

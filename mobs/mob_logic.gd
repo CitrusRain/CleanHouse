@@ -16,6 +16,11 @@ class_name BaseMob
 
 @export var SPEED := 5
 
+@export var go_sit_down : TimeoutSeat
+
+enum state_machine { PLAY, FIND, FETCH, SIT } 
+@onready var activity: state_machine
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -23,21 +28,29 @@ func _ready() -> void:
 	hold_point = $Gremlin/HoldPoint
 
 func _process(_delta):
-	
-	if mob_inventory.get_child_count() != 0:
-		position_item()
-		pass
-	elif mob_inventory.get_child_count() == 0 :
-		if target:
-			pass
-		else:
-			target = targets[randi() % targets.size()]
+	if activity == state_machine.SIT:
+		target = go_sit_down
+		looking_for_target = false
 		navigation_agent_3d.target_position = target.global_position
+		timeout()
+	elif  activity == state_machine.FETCH:
+		pass
+	else:
+		if mob_inventory.get_child_count() != 0:
+			activity = state_machine.PLAY
+			position_item()
+		elif mob_inventory.get_child_count() == 0:
+			activity = state_machine.FIND
+			if target:
+				pass
+			else:
+				target = targets[randi() % targets.size()]
+			navigation_agent_3d.target_position = target.global_position
 	
-	mob_interact.check_interactions()
-	if attention_span.is_stopped() and mob_inventory.get_child_count() > 0:
-		attention_span.wait_time = 1+ randi() % 15
-		attention_span.start()
+		mob_interact.check_interactions()
+		if attention_span.is_stopped() and mob_inventory.get_child_count() > 0:
+			attention_span.wait_time = 1+ randi() % 15
+			attention_span.start()
 		
 
 func _physics_process(delta: float) -> void:
@@ -59,23 +72,24 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_attention_span_timeout() -> void:
-	if mob_inventory.get_child_count() > 0:
-		var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
-		mine.reparent(get_tree().get_first_node_in_group("Mess"))
-		mine.visible = true
-		mine.done_with = false
-	find_something_to_do()
-	if randi() % 10 == 2:
-		var poo = poop.instantiate()
-		poo.pickup_type = general_functions.item_types.DOG_POOP
-		add_child(poo)
-		poo.reparent(get_tree().get_first_node_in_group("Mess"))
+	if activity == state_machine.PLAY:
+		drop_it()
+		find_something_to_do()
+		if randi() % 10 == 2:
+			var poo = poop.instantiate()
+			poo.pickup_type = general_functions.item_types.DOG_POOP
+			add_child(poo)
+			poo.reparent(get_tree().get_first_node_in_group("Mess"))
 
 func find_something_to_do():
-	target = targets[randi() % targets.size()]
-	if target is not ItemGenerator:
-		while target.deposit_type == general_functions.item_types.TRASH:
-			target = targets[randi() % targets.size()]
+	if activity == state_machine.SIT:
+		target = go_sit_down
+		looking_for_target = false
+	else:
+		target = targets[randi() % targets.size()]
+		if target is not ItemGenerator:
+			while target.deposit_type == general_functions.item_types.TRASH:
+				target = targets[randi() % targets.size()]
 	#elif target is ItemGenerator:
 	
 
@@ -86,3 +100,23 @@ func find_somewhere_to_play():
 func position_item():
 	for mi in mob_inventory.get_children():
 		mi.position = hold_point.position
+
+func sit():
+	activity = state_machine.SIT
+
+func timeout():
+	if $TimeoutTimer.is_stopped():
+		if position.distance_to(go_sit_down.get_seat_position().global_position) < 2 :
+			if activity == state_machine.SIT:
+				$TimeoutTimer.start()
+
+func _on_timeout_timer_timeout() -> void:
+	activity = state_machine.PLAY
+	find_something_to_do()
+
+func drop_it() -> void:
+	if mob_inventory.get_child_count() > 0:
+		var mine = mob_inventory.get_child(randi() % mob_inventory.get_child_count())
+		mine.reparent(get_tree().get_first_node_in_group("Mess"))
+		mine.visible = true
+		mine.done_with = false
