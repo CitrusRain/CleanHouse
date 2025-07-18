@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7ph2yxbecca4"]
 
-[ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_tgvi6"]
+[ext_resource type="Script" uid="uid://ipf2fy4ryx81" path="res://items/dog_toy.gd" id="1_q3vod"]
 [ext_resource type="Texture2D" uid="uid://dwmqfw3tar7ja" path="res://textures/dog_bone.png" id="2_tgvi6"]
 [ext_resource type="Texture2D" uid="uid://xmb6nllm5w7u" path="res://textures/tennis_ball.png" id="3_q3vod"]
 
@@ -8,7 +8,7 @@
 radius = 0.7
 
 [node name="DogToy" type="Area3D" groups=["targets", "valuables"]]
-script = ExtResource("1_tgvi6")
+script = ExtResource("1_q3vod")
 pickup_type = 5
 trashed_penalty = 10
 

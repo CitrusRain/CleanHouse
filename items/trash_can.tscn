@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rhqs"]
 
-[node name="TrashCan" type="StaticBody3D" groups=["container", "targets", "trashcan"]]
+[node name="TrashCan" type="StaticBody3D" groups=["container", "dog_targets", "targets", "trashcan"]]
 script = ExtResource("1_dbqyg")
 size = 4
 trash_bag = ExtResource("2_1xxeg")

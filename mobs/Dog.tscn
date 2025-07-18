@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dihjaipivgufv"]
+
+[ext_resource type="Script" uid="uid://cr0tp5lq1n3ke" path="res://mobs/dog.gd" id="1_4jpf7"]
+[ext_resource type="Script" uid="uid://drusfxr0h0mbr" path="res://mobs/mob_interact.gd" id="2_f3m1t"]
+[ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="2_fkvjr"]
+[ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="3_vwe8k"]
+[ext_resource type="Texture2D" uid="uid://c310vmet6oc73" path="res://textures/dog.png" id="5_pq8fs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+radius = 0.0652348
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+
+[node name="Dog" type="CharacterBody3D" groups=["dog", "kid_targets"]]
+script = ExtResource("1_4jpf7")
+poop = ExtResource("2_fkvjr")
+SPEED = 10
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+layers = 3
+mesh = SubResource("CapsuleMesh_kqu6x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oul6g")
+
+[node name="MobInteract" type="ShapeCast3D" parent="." groups=["player_hitbox"]]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.51686, 0)
+shape = SubResource("CapsuleShape3D_rkbax")
+script = ExtResource("2_f3m1t")
+
+[node name="MobInventory" type="Node3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AttentionSpan" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="PlayPoint" type="Sprite3D" parent="."]
+top_level = true
+visible = false
+texture = ExtResource("3_vwe8k")
+
+[node name="SmallDog" type="Sprite3D" parent="."]
+transform = Transform3D(2.46, 0, 0, 0, 2.46, 0, 0, 0, 2.46, 0, -0.595237, 0)
+texture_filter = 0
+texture = ExtResource("5_pq8fs")
+
+[node name="HoldPoint" type="Node3D" parent="SmallDog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000389762, -0.0354957, 0)
+
+[connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]

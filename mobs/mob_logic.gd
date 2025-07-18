@@ -10,6 +10,7 @@ class_name BaseMob
 @onready var mob_inventory: Node3D = $MobInventory
 @onready var attention_span: Timer = $AttentionSpan
 @onready var navigation_region_3d: NavigationRegion3D = get_tree().get_first_node_in_group("NavigationMap")
+@onready var hold_point: Node3D
 
 @export var poop: PackedScene
 
@@ -18,10 +19,13 @@ class_name BaseMob
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready() -> void:
+	hold_point = $Gremlin/HoldPoint
 
 func _process(_delta):
 	
 	if mob_inventory.get_child_count() != 0:
+		position_item()
 		pass
 	elif mob_inventory.get_child_count() == 0 :
 		if target:
@@ -78,3 +82,7 @@ func find_something_to_do():
 func find_somewhere_to_play():
 	navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap").get_navigation_map(), 1, true) 
 	$PlayPoint.global_position = navigation_agent_3d.target_position
+
+func position_item():
+	for mi in mob_inventory.get_children():
+		mi.position = hold_point.position

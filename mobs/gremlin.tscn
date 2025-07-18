@@ -9,6 +9,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+radius = 0.0580885
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
@@ -31,11 +32,13 @@ script = ExtResource("2_mgsp5")
 
 [node name="MobInventory" type="Node3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
-billboard = 2
+[node name="Gremlin" type="Sprite3D" parent="."]
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, -0.266784, 0)
 texture_filter = 0
 texture = ExtResource("3_pnkqr")
+
+[node name="HoldPoint" type="Node3D" parent="Gremlin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0992933, -0.0432646, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -43,6 +46,7 @@ texture = ExtResource("3_pnkqr")
 
 [node name="PlayPoint" type="Sprite3D" parent="."]
 top_level = true
+visible = false
 texture = ExtResource("6_emmlh")
 
 [connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]

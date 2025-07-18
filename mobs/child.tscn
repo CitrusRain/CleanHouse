@@ -9,6 +9,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+radius = 0.0652348
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
@@ -33,24 +34,30 @@ script = ExtResource("3_acww5")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="AttentionSpan" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="PlayPoint" type="Sprite3D" parent="."]
 top_level = true
+visible = false
 texture = ExtResource("6_5yvop")
 
 [node name="Options" type="Node3D" parent="."]
 
 [node name="Boy" type="Sprite3D" parent="Options"]
 transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
-billboard = 2
 texture_filter = 0
 texture = ExtResource("4_j18d4")
 
+[node name="HoldPoint" type="Node3D" parent="Options/Boy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054937, -0.0858391, 0)
+
 [node name="Girl" type="Sprite3D" parent="Options"]
 transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
-billboard = 2
 texture_filter = 0
 texture = ExtResource("5_q83mv")
+
+[node name="HoldPoint" type="Node3D" parent="Options/Girl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0774459, -0.0751569, 0)
 
 [connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]
