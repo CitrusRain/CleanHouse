@@ -1,14 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwflnvxgj1b68"]
+[gd_scene load_steps=15 format=3 uid="uid://bwflnvxgj1b68"]
 
-[ext_resource type="PackedScene" uid="uid://boo35gntjanvi" path="res://user_interface/user_interface.tscn" id="1_1vqyi"]
-[ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="2_ju4eq"]
-[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="3_68bl1"]
-[ext_resource type="PackedScene" uid="uid://djhecvj0b8bi3" path="res://mobs/gremlin.tscn" id="4_mb5kk"]
-[ext_resource type="PackedScene" uid="uid://dlo5pu3etas45" path="res://items/good_food.tscn" id="6_73ucs"]
-[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="8_85066"]
-[ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="15_k6sim"]
-[ext_resource type="PackedScene" uid="uid://cqeofop5rk8gs" path="res://items/Refrigerator.tscn" id="16_3kq82"]
-[ext_resource type="MeshLibrary" uid="uid://djojg6jkpjpr1" path="res://models/applied_scale.tres" id="17_0x1xn"]
+[ext_resource type="PackedScene" uid="uid://boo35gntjanvi" path="res://user_interface/user_interface.tscn" id="1_bseb3"]
+[ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="2_i003e"]
+[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="3_u6a1t"]
+[ext_resource type="PackedScene" uid="uid://trm322qqu0y6" path="res://mobs/child.tscn" id="4_g6d4y"]
+[ext_resource type="PackedScene" uid="uid://dlo5pu3etas45" path="res://items/good_food.tscn" id="5_ddb0x"]
+[ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="6_om5r4"]
+[ext_resource type="PackedScene" uid="uid://cqeofop5rk8gs" path="res://items/Refrigerator.tscn" id="7_n1qjy"]
+[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="8_ok0lk"]
+[ext_resource type="MeshLibrary" uid="uid://djojg6jkpjpr1" path="res://models/applied_scale.tres" id="9_gmi18"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whpuv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -28,6 +28,9 @@ vertices = PackedVector3Array(-11.75, 1.44655, -5.75, 2.75, 1.44655, -5.5, 2.5, 
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 4), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(12, 13, 7), PackedInt32Array(7, 13, 6), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 16), PackedInt32Array(16, 14, 22), PackedInt32Array(22, 14, 17), PackedInt32Array(17, 14, 20), PackedInt32Array(18, 19, 23), PackedInt32Array(23, 19, 24), PackedInt32Array(24, 19, 25), PackedInt32Array(25, 19, 26), PackedInt32Array(28, 27, 24), PackedInt32Array(24, 27, 23), PackedInt32Array(31, 30, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(31, 27, 28), PackedInt32Array(31, 28, 33), PackedInt32Array(31, 33, 32), PackedInt32Array(34, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(15, 42, 14), PackedInt32Array(14, 42, 43), PackedInt32Array(31, 45, 44), PackedInt32Array(46, 47, 42), PackedInt32Array(42, 47, 43), PackedInt32Array(44, 21, 31), PackedInt32Array(31, 21, 30), PackedInt32Array(30, 21, 22), PackedInt32Array(44, 45, 46), PackedInt32Array(46, 45, 47), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53)]
 border_size = 0.25
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2uw4"]
+albedo_color = Color(0.55, 0.545875, 0.4675, 1)
+
 [node name="Sandbox" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -40,34 +43,29 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.662437, 0.749118, 0, -0.749118, 0.662437, 0, 8.58143, 15.8525)
 
-[node name="UserInterface" parent="." instance=ExtResource("1_1vqyi")]
+[node name="UserInterface" parent="." instance=ExtResource("1_bseb3")]
 
-[node name="GameManager" parent="." instance=ExtResource("2_ju4eq")]
+[node name="GameManager" parent="." instance=ExtResource("2_i003e")]
 set_level_seconds = 30
 
-[node name="Player" parent="." instance=ExtResource("3_68bl1")]
+[node name="Player" parent="." instance=ExtResource("3_u6a1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17749, 1.60858, -0.959602)
 
-[node name="Gremlin" parent="." instance=ExtResource("4_mb5kk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00177, 1.05, 1.57213)
-SPEED = 5
-
-[node name="Gremlin2" parent="." instance=ExtResource("4_mb5kk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.623431, 1.05, 1.57213)
-SPEED = 5
+[node name="Child" parent="." instance=ExtResource("4_g6d4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8313, 0)
 
 [node name="Mess" type="Node3D" parent="." groups=["Mess"]]
 
-[node name="GoodFood" parent="Mess" instance=ExtResource("6_73ucs")]
+[node name="GoodFood" parent="Mess" instance=ExtResource("5_ddb0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5133, 0.75, 3.90114)
 
-[node name="GoodFood2" parent="Mess" instance=ExtResource("6_73ucs")]
+[node name="GoodFood2" parent="Mess" instance=ExtResource("5_ddb0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1622, 0.75, 1.26317)
 
-[node name="GoodFood3" parent="Mess" instance=ExtResource("6_73ucs")]
+[node name="GoodFood3" parent="Mess" instance=ExtResource("5_ddb0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7061, 0.75, 4.21657)
 
-[node name="GoodFood4" parent="Mess" instance=ExtResource("6_73ucs")]
+[node name="GoodFood4" parent="Mess" instance=ExtResource("5_ddb0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78535, 0.750001, 6.89212)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["NavigationMap"]]
@@ -75,23 +73,24 @@ navigation_mesh = SubResource("NavigationMesh_50mym")
 
 [node name="Environment" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Dumpster" parent="NavigationRegion3D/Environment" instance=ExtResource("15_k6sim")]
+[node name="Dumpster" parent="NavigationRegion3D/Environment" instance=ExtResource("6_om5r4")]
 transform = Transform3D(-0.998188, 0, -0.0601776, 0, 1, 0, 0.0601776, 0, -0.998188, 12.7968, 0.549999, 6.25581)
 
-[node name="Refridgerator" parent="NavigationRegion3D/Environment" instance=ExtResource("16_3kq82")]
+[node name="Refridgerator" parent="NavigationRegion3D/Environment" instance=ExtResource("7_n1qjy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.828, 0.948217, 3.82278)
 
-[node name="TrashCan" parent="NavigationRegion3D/Environment" instance=ExtResource("8_85066")]
+[node name="TrashCan" parent="NavigationRegion3D/Environment" instance=ExtResource("8_ok0lk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.822, 0, 1.62915)
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.711914, 0, 2.48364)
 use_collision = true
 size = Vector3(30.5762, 0.1, 16.5854)
+material = SubResource("StandardMaterial3D_x2uw4")
 
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315, 0)
-mesh_library = ExtResource("17_0x1xn")
+mesh_library = ExtResource("9_gmi18")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(65519, 10, 2, 65519, 65530, 2, 65519, 65531, 2, 65519, 65532, 2, 65519, 65533, 2, 65519, 65534, 2, 65519, 65535, 2, 65519, 0, 2, 65519, 1, 2, 65519, 2, 2, 65519, 3, 2, 65519, 4, 2, 65519, 5, 2, 65519, 6, 2, 65519, 7, 2, 65519, 8, 2, 65519, 9, 2, 65520, 65530, 2, 65521, 65530, 2, 65522, 65530, 2, 65523, 65530, 2, 65524, 65530, 2, 65525, 65530, 2, 65526, 65530, 2, 65527, 65530, 2, 65528, 65530, 2, 65529, 65530, 2, 65530, 65530, 2, 65531, 65530, 2, 65532, 65530, 2, 65533, 65530, 2, 65534, 65530, 2, 65535, 65530, 2, 0, 65530, 2, 1, 65530, 2, 2, 65530, 2, 3, 65530, 2, 4, 65530, 2, 5, 65530, 2, 6, 65530, 2, 7, 65530, 2, 8, 65530, 2, 9, 65530, 2, 10, 65530, 2, 11, 65530, 2, 12, 65530, 2, 13, 65530, 2, 14, 65530, 2, 14, 65531, 2, 14, 65532, 2, 14, 65533, 2, 14, 65534, 2, 14, 65535, 2, 14, 0, 2, 14, 1, 2, 14, 2, 2, 14, 3, 2, 14, 4, 2, 14, 5, 2, 14, 6, 2, 14, 7, 2, 14, 8, 2, 14, 9, 2, 14, 10, 2, 65520, 11, 0, 65521, 11, 0, 65522, 11, 0, 65523, 11, 0, 65524, 11, 0, 65525, 11, 0, 65526, 11, 0, 65527, 11, 0, 65528, 11, 0, 65529, 11, 0, 65530, 11, 0, 65531, 11, 0, 65532, 11, 0, 65533, 11, 0, 65534, 11, 0, 65535, 11, 0, 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 10, 11, 0, 11, 11, 0, 12, 11, 0, 13, 11, 0, 14, 11, 0, 65519, 11, 0, 0, 8, 0, 1, 9, 0, 1, 10, 0, 0, 10, 0, 65535, 10, 0, 65535, 9, 0, 65535, 8, 0, 0, 9, 0, 65520, 10, 0, 65521, 10, 0, 65522, 10, 0, 65523, 10, 0, 65524, 10, 0, 65525, 10, 0, 65526, 10, 0, 65527, 10, 0, 65528, 10, 0, 65529, 10, 0, 65530, 10, 0, 65531, 10, 0, 65532, 10, 0, 65533, 10, 0, 65534, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 65537, 8, 5, 65550, 10, 8, 65550, 9, 8, 65551, 11, 8, 65550, 11, 8, 1, 8, 0)

@@ -2,10 +2,13 @@ extends CharacterBody3D
 class_name Player 
 
 @onready var player_interact: ShapeCast3D = $PlayerInteract
+@onready var player_inventory: Node3D = $PlayerInventory
 
+@onready var game_manager = get_tree().get_first_node_in_group("game_manager")
 
 @export var SPEED = 10.0
 
+var ultimate_ready = false
 
 func _ready() -> void:
 	if $Options:
@@ -37,3 +40,27 @@ func _physics_process(delta: float) -> void:
 		player_interact.check_interactions()
 	
 	move_and_slide()
+	use_hands()
+
+	#align stuff with hands or drop them
+func use_hands():
+	var i = 1
+	var left_hand = get_tree().get_first_node_in_group("player_left_hand")
+	var right_hand = get_tree().get_first_node_in_group("player_right_hand")
+	for it in player_inventory.get_children():
+		if i == 1:
+			it.global_position = left_hand.global_position
+			i += 1
+		elif i == 2:
+			it.global_position = right_hand.global_position
+			i += 1
+		else:
+			it.reparent(get_tree().get_first_node_in_group("Mess"))
+			it.visible = true
+			it.done_with = false
+
+func get_mad():
+	ultimate_ready = game_manager.add_rage_meter(19)
+
+func get_inventory_count() -> int:
+	return player_inventory.get_child_count()

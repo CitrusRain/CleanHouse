@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6nrspvcpbfh2" path="res://game_manager.gd" id="1_70yv6"]
 
-[node name="GameManager" type="Node3D"]
+[node name="GameManager" type="Node3D" groups=["game_manager"]]
 process_mode = 3
 script = ExtResource("1_70yv6")
 

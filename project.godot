@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Clean House"
-run/main_scene="uid://poagvr7f6cqf"
+run/main_scene="uid://dy2jfa8r5mhmc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Data="*res://Data/Data.tscn"
 
 [global_group]
 
@@ -29,6 +33,9 @@ valuables=""
 kid_targets="targets that kids will look for"
 dog_targets="Things a dog would go to"
 command_zone=""
+RageBar=""
+game_manager=""
+LevelList=""
 
 [input]
 

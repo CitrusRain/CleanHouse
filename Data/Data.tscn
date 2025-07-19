@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://p3x46xapx1va"]
+
+[ext_resource type="Script" uid="uid://dr2lynu4mdvw5" path="res://Data/data.gd" id="1_ious1"]
+[ext_resource type="PackedScene" uid="uid://dnvd312ybut5x" path="res://Data/level_info.tscn" id="2_oy14m"]
+
+[node name="Scores" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ious1")
+
+[node name="Tutorial" parent="." instance=ExtResource("2_oy14m")]
+level_file = "uid://bfkfdq8cp4tbm"
+level_Unique_ID = 1
+max_score = 100
+passing_score = 100
+
+[node name="Level" parent="." instance=ExtResource("2_oy14m")]
+level_file = "uid://cgu6ncinrkgup"
+level_Unique_ID = 19
+max_score = 2025

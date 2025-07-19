@@ -45,6 +45,8 @@ func _process(_delta: float) -> void:
 				if dogs.size() > 0:
 					dog_choice = get_tree().get_nodes_in_group("dog")[randi() % get_tree().get_nodes_in_group("dog").size()]
 					fetch_mode = true
+			
+					
 			pass
 		elif mob_inventory.get_child_count() == 0 :
 			activity = state_machine.FIND
@@ -58,8 +60,9 @@ func _process(_delta: float) -> void:
 		mob_interact.check_interactions()
 	
 	if mob_inventory.get_child_count() > 0:
-		#print("timer time " , attention_span.time_left)
-		pass
+		if mob_inventory.get_children()[0] is PerishableFood:
+			if not mob_inventory.get_children()[0].expired and randi() % 100 == 1:
+				eat(mob_inventory.get_children()[0])
 		
 #	print("Trash = " , general_functions.item_types.TRASH)
 
@@ -120,7 +123,7 @@ func _physics_process(delta: float) -> void:
 
 func find_somewhere_to_play():
 	navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap").get_navigation_map(), 1, true) 
-	print(navigation_agent_3d.target_position)
+	#print(navigation_agent_3d.target_position)
 	$PlayPoint.position = navigation_agent_3d.target_position
 
 func _on_attention_span_timeout() -> void:

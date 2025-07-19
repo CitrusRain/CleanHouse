@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boo35gntjanvi"]
+[gd_scene load_steps=12 format=3 uid="uid://boo35gntjanvi"]
 
 [ext_resource type="Script" uid="uid://cp70mqkqykoy1" path="res://user_interface/user_interface.gd" id="1_og86u"]
 [ext_resource type="Texture2D" uid="uid://ix85ha5p4nkb" path="res://textures/clean_meter_frame.png" id="1_ratyj"]
@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dj6jmvwudireg" path="res://textures/clean_meter_empty.png" id="3_ur1vw"]
 [ext_resource type="PackedScene" uid="uid://cagv3t5te01h3" path="res://user_interface/unhandled_item_penalty.tscn" id="5_n3kvg"]
 [ext_resource type="PackedScene" uid="uid://w2wh54wovnqs" path="res://user_interface/mishandled_item_penalty.tscn" id="6_fea8n"]
+[ext_resource type="Texture2D" uid="uid://b5m73bsq1disu" path="res://textures/rage_meter_frame.png" id="7_cxjh8"]
+[ext_resource type="Texture2D" uid="uid://crrjk7ghce1qp" path="res://textures/rage_meter_background.png" id="8_r6j1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vy2ku"]
 font_size = 66
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_glmas"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oo55i"]
 font_size = 72
@@ -39,23 +39,39 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HealthArea" type="Control" parent="HUD"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_mode = 2
+
+[node name="HealthArea" type="Control" parent="HUD/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD/HealthArea" groups=["HealthBar"]]
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/VBoxContainer/HealthArea" groups=["HealthBar"]]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
+scale = Vector2(3, 3)
 min_value = 4.35
-max_value = 1300.0
 step = 100.0
-value = 104.35
+value = 100.0
 fill_mode = 1
 texture_under = ExtResource("1_ur1vw")
 texture_over = ExtResource("1_ratyj")
 texture_progress = ExtResource("3_ur1vw")
+
+[node name="RageMeter" type="Control" parent="HUD/VBoxContainer"]
+layout_mode = 2
+
+[node name="RageBar" type="TextureProgressBar" parent="HUD/VBoxContainer/RageMeter" groups=["RageBar"]]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 100.0
+offset_bottom = 103.0
+scale = Vector2(2.675, 2.675)
+texture_under = ExtResource("3_ur1vw")
+texture_over = ExtResource("7_cxjh8")
+texture_progress = ExtResource("8_r6j1t")
 
 [node name="ScoreContainer" type="MarginContainer" parent="HUD"]
 layout_mode = 2
@@ -85,11 +101,6 @@ text = "3:00"
 label_settings = SubResource("LabelSettings_vy2ku")
 horizontal_alignment = 2
 
-[node name="Another Screen (placeholder)" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="DialogArea" type="HBoxContainer" parent="." groups=["DialogArea"]]
 layout_mode = 1
 anchors_preset = 2
@@ -101,40 +112,6 @@ offset_right = 1227.18
 offset_bottom = 161.135
 grow_vertical = 0
 scale = Vector2(0.42, 0.42)
-
-[node name="TouchControls" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="FullScreenShootButton" type="TouchScreenButton" parent="TouchControls"]
-scale = Vector2(4000, 4000)
-shape = SubResource("RectangleShape2D_glmas")
-
-[node name="Panel" type="Panel" parent="TouchControls"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -343.0
-offset_top = -300.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="BoostButton" type="TouchScreenButton" parent="TouchControls/Panel"]
-position = Vector2(215, 5)
-scale = Vector2(0.235, 0.235)
-
-[node name="BrakeButton" type="TouchScreenButton" parent="TouchControls/Panel"]
-position = Vector2(69, 95)
-scale = Vector2(0.255, 0.255)
 
 [node name="GameOverScreen" type="CenterContainer" parent="." groups=["game_over_screen"]]
 visible = false
@@ -199,16 +176,24 @@ layout_mode = 2
 label_settings = SubResource("LabelSettings_oo55i")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="GameOverScreen/PanelContainer/VBoxContainer"]
-process_mode = 2
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameOverScreen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Retry?"
 
-[connection signal="pressed" from="TouchControls/FullScreenShootButton" to="." method="_on_full_screen_shoot_button_pressed"]
-[connection signal="pressed" from="TouchControls/Panel/BoostButton" to="." method="_on_touch_screen_boost_button_pressed"]
-[connection signal="released" from="TouchControls/Panel/BoostButton" to="." method="_on_touch_screen_button_released"]
-[connection signal="pressed" from="TouchControls/Panel/BrakeButton" to="." method="_on_brake_button_pressed"]
-[connection signal="released" from="TouchControls/Panel/BrakeButton" to="." method="_on_touch_screen_button_released"]
+[node name="RetryButton" type="Button" parent="GameOverScreen/PanelContainer/VBoxContainer/HBoxContainer2"]
+process_mode = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="GameOverScreen/PanelContainer/VBoxContainer/HBoxContainer2"]
+process_mode = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Level Select"
+
 [connection signal="visibility_changed" from="GameOverScreen" to="." method="_on_game_over_screen_visibility_changed"]
-[connection signal="pressed" from="GameOverScreen/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/PanelContainer/VBoxContainer/HBoxContainer2/RetryButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOverScreen/PanelContainer/VBoxContainer/HBoxContainer2/MainMenu" to="." method="_on_main_menu_pressed"]

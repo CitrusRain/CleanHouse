@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=3 uid="uid://dy2jfa8r5mhmc"]
+
+[ext_resource type="Texture2D" uid="uid://d2t4mj818l13v" path="res://textures/Child♀.png" id="1_1aipp"]
+[ext_resource type="Script" uid="uid://btuo2ljexbdd6" path="res://user_interface/main_menu.gd" id="1_4kdiw"]
+[ext_resource type="PackedScene" uid="uid://bumplnfwr16lv" path="res://Data/level_button.tscn" id="2_4kdiw"]
+[ext_resource type="PackedScene" uid="uid://std4be5efuwl" path="res://models/bad_couch.glb" id="2_xqlja"]
+[ext_resource type="PackedScene" uid="uid://flw2rmglext3" path="res://player/player.tscn" id="3_ejyv4"]
+[ext_resource type="Script" uid="uid://bym2a4guvjsqw" path="res://player/main_menu_player.gd" id="4_l8n0t"]
+[ext_resource type="AudioStream" uid="uid://b6ufja11knx7u" path="res://sound/Music/Title Theme ISGJ.mp3" id="5_3q3p2"]
+[ext_resource type="PackedScene" uid="uid://dlo5pu3etas45" path="res://items/good_food.tscn" id="5_kemk3"]
+[ext_resource type="PackedScene" uid="uid://kdl38kruw2og" path="res://items/jewelry.tscn" id="6_stmif"]
+[ext_resource type="PackedScene" uid="uid://duweiuaoial4g" path="res://items/dog_toy_basket.tscn" id="6_u2gaw"]
+[ext_resource type="PackedScene" uid="uid://df113ded8cj2r" path="res://items/toy.tscn" id="7_icint"]
+[ext_resource type="PackedScene" uid="uid://c7ph2yxbecca4" path="res://items/dog_toy.tscn" id="7_kemk3"]
+[ext_resource type="PackedScene" uid="uid://1eq6ledtk0sq" path="res://items/trash_can.tscn" id="8_mybk7"]
+[ext_resource type="PackedScene" uid="uid://dfeh8hkcge7sm" path="res://items/toy_chest.tscn" id="9_f6tni"]
+[ext_resource type="PackedScene" uid="uid://ey14ntv03xn2" path="res://items/trash_bag.tscn" id="12_f6tni"]
+[ext_resource type="PackedScene" uid="uid://w7lrsklx047t" path="res://items/dog_poop.tscn" id="14_egeff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2uw4"]
+albedo_color = Color(0.55, 0.545875, 0.4675, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejyv4"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_l8n0t"]
+sky_material = SubResource("ProceduralSkyMaterial_ejyv4")
+
+[sub_resource type="Environment" id="Environment_3q3p2"]
+background_mode = 2
+sky = SubResource("Sky_l8n0t")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4kdiw")
+level_button_maker = ExtResource("2_4kdiw")
+
+[node name="LevelListNew" type="ItemList" parent="."]
+layout_mode = 2
+offset_top = 242.0
+offset_right = 352.0
+offset_bottom = 242.0
+item_count = 1
+max_columns = 3
+
+[node name="LevelList" type="VBoxContainer" parent="." groups=["LevelList"]]
+layout_mode = 2
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -82.0
+offset_right = 352.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 40.0
+texture = ExtResource("1_1aipp")
+
+[node name="3DScene" type="Node3D" parent="."]
+
+[node name="bad_couch" parent="3DScene" instance=ExtResource("2_xqlja")]
+transform = Transform3D(-0.69, 0, -6.03217e-08, 0, 0.69, 0, 6.03217e-08, 0, -0.69, -1.34781, 0.74, 4.1024)
+
+[node name="Floor" type="CSGBox3D" parent="3DScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.711914, 0, 2.48364)
+use_collision = true
+size = Vector3(30.5762, 0.1, 16.5854)
+material = SubResource("StandardMaterial3D_x2uw4")
+
+[node name="Camera3D" type="Camera3D" parent="3DScene"]
+transform = Transform3D(-0.67373, 0.428667, -0.60194, -0.078074, 0.768709, 0.634816, 0.734842, 0.47469, -0.484435, -3.25269, 2.32922, 1.98691)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3DScene"]
+environment = SubResource("Environment_3q3p2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3DScene"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="3DScene" instance=ExtResource("3_ejyv4")]
+transform = Transform3D(0.0669873, 0.965926, 0.25, -0.25, 0.258819, -0.933013, -0.965926, 0, 0.258819, -2.09387, 1.05, 3.53857)
+script = ExtResource("4_l8n0t")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="3DScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449219, 2.10699, 3.27991)
+flip_faces = true
+size = Vector3(27.5366, 5.21399, 11.915)
+
+[node name="GoodFood" parent="3DScene" instance=ExtResource("5_kemk3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.483174, 1.66329, 4.48408)
+
+[node name="Jewelry" parent="3DScene" instance=ExtResource("6_stmif")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.10189, 0.225, 2.45274)
+
+[node name="Toy" parent="3DScene" instance=ExtResource("7_icint")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.0334, 0.4, 5.78266)
+
+[node name="Toy2" parent="3DScene" instance=ExtResource("7_icint")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.60583, 0.4, 3.66025)
+
+[node name="TrashCan" parent="3DScene" instance=ExtResource("8_mybk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9729, 0.531167, 2.93773)
+
+[node name="ToyChest" parent="3DScene" instance=ExtResource("9_f6tni")]
+transform = Transform3D(-0.854423, 0, 0.519579, 0, 1, 0, -0.519579, 0, -0.854423, 6.65572, 0.545957, 4.6833)
+
+[node name="DogToyBasket" parent="3DScene" instance=ExtResource("6_u2gaw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.87463, 0.547035, 3.66455)
+
+[node name="DogToy" parent="3DScene" instance=ExtResource("7_kemk3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.6615, 0.394165, 2.80652)
+
+[node name="DogToy2" parent="3DScene" instance=ExtResource("7_kemk3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.24904, 0.394165, 2.80652)
+
+[node name="TrashBag" parent="3DScene" instance=ExtResource("12_f6tni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3816, 0.75, 5.26645)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3q3p2")
+autoplay = true
+parameters/looping = true
+
+[node name="DogPoop" parent="." instance=ExtResource("14_egeff")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 11.1136, 0.307046, 3.53484)

@@ -26,6 +26,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	hold_point = $Gremlin/HoldPoint
+	for thing in self.get_children():
+		if thing is pickup:
+			thing.reparent(mob_inventory)
 
 func _process(_delta):
 	if activity == state_machine.SIT:
@@ -52,6 +55,10 @@ func _process(_delta):
 			attention_span.wait_time = 1+ randi() % 15
 			attention_span.start()
 		
+	if mob_inventory.get_child_count() > 0:
+		if mob_inventory.get_children()[0] is PerishableFood:
+			if not mob_inventory.get_children()[0].expired and randi() % 100 == 1:
+				eat(mob_inventory.get_children()[0])
 
 func _physics_process(delta: float) -> void:
 	if not looking_for_target:
@@ -120,3 +127,6 @@ func drop_it() -> void:
 		mine.reparent(get_tree().get_first_node_in_group("Mess"))
 		mine.visible = true
 		mine.done_with = false
+
+func eat(food: pickup) -> void:
+	food.queue_free()

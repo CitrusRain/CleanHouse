@@ -18,11 +18,20 @@ lose_points = 200
 radius = 0.7
 material = SubResource("StandardMaterial3D_1p74u")
 
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, -0.999462, -0.0327887, 0, 0.0327887, -0.999462, 0, 0.700553, 0)
+radius = 0.259
+height = 0.239
+sides = 16
+cone = true
+material = SubResource("StandardMaterial3D_1p74u")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x1sru")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+visible = false
 billboard = 1
 text = "Trash Bag"
 font_size = 137

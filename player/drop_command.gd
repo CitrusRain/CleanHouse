@@ -3,7 +3,7 @@ extends CommandZone
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print("body entered by " , body)
+	#print("body entered by " , body)
 	if body is BaseMob:
 		body.drop_it()
 		

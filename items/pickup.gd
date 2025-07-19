@@ -25,14 +25,18 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if move_to_inventory:
-		reparent(player_body.get_node("PlayerInventory"))
+		var inven = player_body.get_node("PlayerInventory")
+		if inven.get_child_count() <= 2:
+			reparent(inven)
 		move_to_inventory = false
 		
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player and not done_with:
-		move_to_inventory = true
-		player_body = body
+		if body.get_inventory_count() < 2:
+			move_to_inventory = true
+			player_body = body
+			body.get_mad()
 
 func compare_points(compareto: pickup) -> bool:
 	if (lose_points == compareto.lose_points):

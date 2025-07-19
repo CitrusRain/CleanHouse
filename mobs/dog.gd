@@ -9,18 +9,20 @@ var new_play_point: Vector3
 var deposit_type = general_functions.item_types.WILD
 
 func _ready() -> void:
-	if $Options:
-		var options = $Options.get_children()
-		for option in options:
-			option.visible = false
-		options[randi() % options.size()].visible = true
-		for option in options:
-			if option.visible == false:
-				option.queue_free()
-			else:
-				hold_point = option.get_child(0)
-	else:
-		hold_point = $SmallDog/HoldPoint
+	#if $Options:
+		#var options = $Options.get_children()
+		#for option in options:
+			#option.visible = false
+		#options[randi() % options.size()].visible = true
+		#for option in options:
+			#if option.visible == false:
+				#option.queue_free()
+			#else:
+				#hold_point = option.get_child(0)
+		#pass
+	#else:
+		#hold_point = $SmallDog/HoldPoint
+	hold_point = $SmallDog/HoldPoint #remove if options are added and the above undocumented
 	previous_play_point_pos = position
 	find_something_to_do()
 
@@ -50,7 +52,10 @@ func _process(_delta: float) -> void:
 			navigation_agent_3d.target_position = target.global_position
 		
 		mob_interact.check_interactions()
-	
+	if mob_inventory.get_child_count() > 0:
+		if mob_inventory.get_children()[0] is PerishableFood:
+			if randi() % 20 == 1:
+				eat(mob_inventory.get_children()[0])
 
 func _physics_process(delta: float) -> void:
 	if not looking_for_target:
@@ -95,7 +100,7 @@ func _physics_process(delta: float) -> void:
 
 func find_somewhere_to_play():
 	navigation_agent_3d.target_position = NavigationServer3D.map_get_random_point(get_tree().get_first_node_in_group("NavigationMap").get_navigation_map(), 1, true) 
-	print(navigation_agent_3d.target_position)
+	#print(navigation_agent_3d.target_position)
 	$PlayPoint.position = navigation_agent_3d.target_position
 
 func _on_attention_span_timeout() -> void:

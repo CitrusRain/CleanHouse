@@ -33,13 +33,23 @@ script = ExtResource("2_rkbax")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562686, 0)
 
 [node name="Man" type="Sprite3D" parent="Options"]
-transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
-billboard = 2
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, -0.0119686, 0)
 texture_filter = 0
 texture = ExtResource("3_yw30f")
 
+[node name="HoldPointL" type="Node3D" parent="Options/Man" groups=["player_left_hand"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104857, -0.12877, 0)
+
+[node name="HoldPointR" type="Node3D" parent="Options/Man" groups=["player_right_hand"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107419, -0.136905, 0)
+
 [node name="Woman" type="Sprite3D" parent="Options"]
-transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, 0, 0)
-billboard = 2
+transform = Transform3D(4.865, 0, 0, 0, 4.865, 0, 0, 0, 4.865, 0, -0.0119686, 0)
 texture_filter = 0
 texture = ExtResource("4_qjkh3")
+
+[node name="HoldPointL" type="Node3D" parent="Options/Woman" groups=["player_left_hand"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104857, -0.12877, 0)
+
+[node name="HoldPointR" type="Node3D" parent="Options/Woman" groups=["player_right_hand"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0987131, -0.135662, 0)

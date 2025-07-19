@@ -34,7 +34,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print("body entered by " , body)
+	#print("body entered by " , body)
 	if body is BaseMob:
 		body.sit()
 		
