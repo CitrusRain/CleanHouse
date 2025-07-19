@@ -13,12 +13,20 @@ grow_vertical = 2
 script = ExtResource("1_ious1")
 
 [node name="Tutorial" parent="." instance=ExtResource("2_oy14m")]
+title = "Tutorial"
 level_file = "uid://bfkfdq8cp4tbm"
-level_Unique_ID = 1
+level_Unique_ID = -1
 max_score = 100
 passing_score = 100
 
-[node name="Level" parent="." instance=ExtResource("2_oy14m")]
+[node name="Level1" parent="." instance=ExtResource("2_oy14m")]
+title = "Level 1"
+level_file = "uid://2dqwvavbcrbh"
+level_Unique_ID = 2
+max_score = 100
+passing_score = 100
+
+[node name="DeveloperLevel" parent="." instance=ExtResource("2_oy14m")]
 level_file = "uid://cgu6ncinrkgup"
 level_Unique_ID = 19
 max_score = 2025

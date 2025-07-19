@@ -12,11 +12,14 @@ var level_info : Control
 
 
 func _ready() -> void:
+	#Make sure LevelRoot node and Data's entry for the level have the same UID
 	level_info = Data.get_level_info(level_Unique_ID)
+	# OR WILL CRASH OR JUST MESS UP SCORES
+	
 	high_score = level_info.high_score
 	max_score = level_info.max_score
 	health_bar.max_value = max_score
-	game_manager.max = max_score
+	game_manager.maxx = max_score
 
 #func _process(delta: float) -> void:
 	#print(health_bar.max_value)

@@ -11,7 +11,7 @@ var game_state : game_states
 @onready var user_interface: Control = get_tree().get_first_node_in_group("UserInterface")
 
 @onready var rage_bar = get_tree().get_first_node_in_group("RageBar")
-var max = 0;
+var maxx = 0;
 
 
 func _ready() -> void:
@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 	var adjusted_time = general_functions.seconds_to_minutes_and_seconds_string(int(level_timer.time_left))
 	get_tree().get_first_node_in_group("TimerDisplay").text = adjusted_time
 	live_score()
-	health_bar.max_value = max
+	health_bar.max_value = maxx
 	pass
 
 func live_score():

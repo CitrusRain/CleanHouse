@@ -1,5 +1,6 @@
 extends Control
 
+@export var title := ""
 @export_file("*.tscn") var level_file
 @export var level_Unique_ID : int
 
@@ -8,6 +9,7 @@ extends Control
 
 @export var passing_score := 500
 @onready var passed := false
+
 
 func get_score() -> String:
 	return str(high_score , " / " , max_score)

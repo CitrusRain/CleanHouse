@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bumplnfwr16lv"]
+[gd_scene load_steps=2 format=3 uid="uid://bumplnfwr16lv"]
 
-[ext_resource type="Texture2D" uid="uid://dmh2hdoi6hjie" path="res://icon.svg" id="1_4b3tp"]
 [ext_resource type="Script" uid="uid://dpoljwukqxv1k" path="res://user_interface/level_button.gd" id="2_soibr"]
 
 [node name="LevelButton" type="Button"]
 text = "Level 1"
-icon = ExtResource("1_4b3tp")
 script = ExtResource("2_soibr")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
