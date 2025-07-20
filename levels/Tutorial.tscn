@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfkfdq8cp4tbm"]
+[gd_scene load_steps=32 format=3 uid="uid://bfkfdq8cp4tbm"]
 
 [ext_resource type="Script" uid="uid://ys7tbjde0rts" path="res://Data/local_level_info.gd" id="1_f48ms"]
 [ext_resource type="PackedScene" uid="uid://b4tijul60xeka" path="res://game_manager.tscn" id="2_ajs55"]
@@ -21,10 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://5jghfylo2am0" path="res://items/jewelry_box.tscn" id="19_gu0tg"]
 [ext_resource type="PackedScene" uid="uid://bv7krjup26rbp" path="res://items/dumpster.tscn" id="20_1f1n0"]
 [ext_resource type="PackedScene" uid="uid://cqeofop5rk8gs" path="res://items/Refrigerator.tscn" id="21_07i4i"]
+[ext_resource type="PackedScene" uid="uid://dugi81m7tdc4" path="res://items/mouse_icons.tscn" id="22_ajs55"]
 [ext_resource type="PackedScene" uid="uid://std4be5efuwl" path="res://models/bad_couch.glb" id="22_l0431"]
 [ext_resource type="MeshLibrary" uid="uid://djojg6jkpjpr1" path="res://models/applied_scale.tres" id="23_ou1kc"]
 [ext_resource type="PackedScene" uid="uid://b1nbedkjyahwg" path="res://items/timeout_seat.tscn" id="24_b8d5s"]
-[ext_resource type="AudioStream" uid="uid://kuobnhpdy7w5" path="res://sound/Music/idk.mp3" id="25_y0d45"]
+[ext_resource type="AudioStream" uid="uid://c5ni7i0875ckx" path="res://sound/Music/Tutorial Clean House ISGJ.mp3" id="25_f48ms"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whpuv"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -139,6 +140,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.08
 
 [node name="Refridgerator3" parent="NavigationRegion3D/Environment" instance=ExtResource("21_07i4i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.83455, 0.948217, 5.76754)
+spawnable_object = ExtResource("22_ajs55")
 
 [node name="bad_couch" parent="NavigationRegion3D/Environment" instance=ExtResource("22_l0431")]
 transform = Transform3D(-0.69, 0, -6.03217e-08, 0, 0.69, 0, 6.03217e-08, 0, -0.69, -0.419953, 0.74, 9.42644)
@@ -170,5 +172,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425782, 0, 9.07518)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869815, 0, 9.07518)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_y0d45")
+stream = ExtResource("25_f48ms")
 autoplay = true

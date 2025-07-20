@@ -20,13 +20,34 @@ max_score = 100
 passing_score = 100
 
 [node name="Level1" parent="." instance=ExtResource("2_oy14m")]
-title = "Level 1"
+title = "Level 1 - Kid"
 level_file = "uid://2dqwvavbcrbh"
+level_Unique_ID = 1
+passing_score = 1500
+
+[node name="Level2" parent="." instance=ExtResource("2_oy14m")]
+title = "Level 2 - Two Kids"
+level_file = "uid://dgu2tlqafei03"
 level_Unique_ID = 2
-max_score = 100
+passing_score = 1500
+
+[node name="Level3" parent="." instance=ExtResource("2_oy14m")]
+title = "Level 3 - Puppy"
+level_file = "uid://chlw11f3l73rs"
+level_Unique_ID = 3
+max_score = 500
+passing_score = 475
+
+[node name="Level4" parent="." instance=ExtResource("2_oy14m")]
+title = "Level 4 - A kid's pet"
+level_file = "res://levels/Level4.tscn"
+level_Unique_ID = 4
+max_score = 500
 passing_score = 100
 
-[node name="DeveloperLevel" parent="." instance=ExtResource("2_oy14m")]
+[node name="Level5" parent="." instance=ExtResource("2_oy14m")]
+title = "Level 5 - A dream of your kid's sleepover"
 level_file = "uid://cgu6ncinrkgup"
-level_Unique_ID = 19
-max_score = 2025
+level_Unique_ID = 5
+max_score = 1500
+passing_score = 1100

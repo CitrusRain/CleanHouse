@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://om0odi7c3n3a"
+path="res://.godot/imported/Final Level Clean House ISGJ.mp3-e2fc2fda5aba32807fda1de625396637.mp3str"
+
+[deps]
+
+source_file="res://sound/Music/Final Level Clean House ISGJ.mp3"
+dest_files=["res://.godot/imported/Final Level Clean House ISGJ.mp3-e2fc2fda5aba32807fda1de625396637.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -10,7 +10,7 @@ radius = 0.7
 [node name="DogToy" type="Area3D" groups=["targets", "valuables"]]
 script = ExtResource("1_q3vod")
 pickup_type = 5
-trashed_penalty = 10
+trashed_penalty = 200
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false

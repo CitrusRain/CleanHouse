@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://mub4nqr5jtuk"]
+[gd_scene load_steps=6 format=3 uid="uid://mub4nqr5jtuk"]
 
 [ext_resource type="Script" uid="uid://0id7nimqeq1v" path="res://items/pickup.gd" id="1_r8meo"]
-[ext_resource type="Texture2D" uid="uid://b72upmwypg4hk" path="res://textures/old_cookie.png" id="2_jjnkj"]
+[ext_resource type="Texture2D" uid="uid://cu2ccwjopweds" path="res://textures/Unknown_substance.png" id="3_1pkkn"]
 [ext_resource type="Texture2D" uid="uid://g4ko1ylha51u" path="res://textures/old_half_eaten_banana.png" id="3_k33gf"]
+[ext_resource type="Texture2D" uid="uid://ber8afkfh6ne3" path="res://textures/fish_bones.png" id="4_88gs0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
 radius = 0.7
@@ -28,16 +29,22 @@ outline_size = 62
 
 [node name="Options" type="Node3D" parent="."]
 
-[node name="KissedCookie" type="Sprite3D" parent="Options"]
-transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("2_jjnkj")
-
 [node name="OldBanana" type="Sprite3D" parent="Options"]
 transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("3_k33gf")
+
+[node name="UnknownSubstance" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_1pkkn")
+
+[node name="FishBones" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_88gs0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

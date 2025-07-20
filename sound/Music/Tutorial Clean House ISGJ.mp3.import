@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5ni7i0875ckx"
+path="res://.godot/imported/Tutorial Clean House ISGJ.mp3-06419fb49e7a2e37579496ab306379d3.mp3str"
+
+[deps]
+
+source_file="res://sound/Music/Tutorial Clean House ISGJ.mp3"
+dest_files=["res://.godot/imported/Tutorial Clean House ISGJ.mp3-06419fb49e7a2e37579496ab306379d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

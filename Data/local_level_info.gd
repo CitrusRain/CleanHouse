@@ -5,7 +5,7 @@ var level_info : Control
 @export var level_Unique_ID : int
 
 @onready var high_score:= 0
-@export var max_score := 2000
+@onready var max_score := 0
 @onready var health_bar: TextureProgressBar = get_tree().get_first_node_in_group("HealthBar")
 
 @onready var game_manager: Node3D = $GameManager

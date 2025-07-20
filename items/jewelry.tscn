@@ -11,7 +11,7 @@ radius = 0.7
 [node name="Jewelry" type="Area3D" groups=["targets", "valuables"]]
 script = ExtResource("1_lwr2x")
 pickup_type = 6
-trashed_penalty = 500
+trashed_penalty = 750
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false

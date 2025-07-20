@@ -5,7 +5,7 @@ class_name PerishableFood
 @export var bad_loose_points:= 150
 
 var expiration_time = 10 + (randi() % 30)
-var expired = false
+@export var expired = false
 
 func _ready() -> void:	
 	if $Label3D.text == "#":

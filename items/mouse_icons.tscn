@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://dugi81m7tdc4"]
+
+[ext_resource type="Script" uid="uid://5q7msqnrbpvn" path="res://items/mouse_icons.gd" id="1_7ihhi"]
+[ext_resource type="Texture2D" uid="uid://cri7i1ig7crbf" path="res://textures/mouse_finger.png" id="2_7ihhi"]
+[ext_resource type="Texture2D" uid="uid://cijgpo6t3sx66" path="res://textures/mouse_left_click.png" id="3_md6b3"]
+[ext_resource type="Texture2D" uid="uid://cpn05dudlt508" path="res://textures/mouse_right_click.png" id="4_lrqig"]
+[ext_resource type="Texture2D" uid="uid://dsldvua55hhyx" path="res://textures/Mouse_arrow.png" id="5_kf8xj"]
+[ext_resource type="Texture2D" uid="uid://bvata8uil4kme" path="res://textures/fermented_orange_juice.png" id="6_qb1nc"]
+[ext_resource type="Texture2D" uid="uid://b6iljr23tse41" path="res://textures/old_sandwich.png" id="7_gqyfd"]
+[ext_resource type="Texture2D" uid="uid://g4ko1ylha51u" path="res://textures/old_half_eaten_banana.png" id="8_2yyei"]
+[ext_resource type="Texture2D" uid="uid://cclks4a0rh5w0" path="res://textures/Popsickle_stick.png" id="9_15n5q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x1sru"]
+radius = 0.7
+
+[node name="MouseIcons" type="Area3D" groups=["targets"]]
+script = ExtResource("1_7ihhi")
+lose_points = 1
+trashed_penalty = 5
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x1sru")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852626, 0)
+visible = false
+billboard = 1
+text = "Food"
+font_size = 137
+outline_size = 62
+
+[node name="Options" type="Node3D" parent="."]
+
+[node name="OrangeJuice" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_7ihhi")
+
+[node name="Sandwich" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_md6b3")
+
+[node name="Banana" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_lrqig")
+
+[node name="Popsicle" type="Sprite3D" parent="Options"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("5_kf8xj")
+
+[node name="BadOptions" type="Node3D" parent="."]
+visible = false
+
+[node name="OrangeJuice" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("6_qb1nc")
+
+[node name="Sandwich" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("7_gqyfd")
+
+[node name="Banana" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("8_2yyei")
+
+[node name="Popsicle" type="Sprite3D" parent="BadOptions"]
+transform = Transform3D(5.745, 0, 0, 0, 5.745, 0, 0, 0, 5.745, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("9_15n5q")
+
+[node name="ExpireTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]

@@ -44,7 +44,7 @@ albedo_color = Color(0.55, 0.545875, 0.4675, 1)
 
 [node name="LevelRoot" type="Node3D"]
 script = ExtResource("1_1bxb8")
-level_Unique_ID = 19
+level_Unique_ID = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7he1i")
